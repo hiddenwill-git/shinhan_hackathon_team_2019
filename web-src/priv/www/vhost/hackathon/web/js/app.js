@@ -1,4 +1,4 @@
-var app = angular.module('app', ['restangular', 'ngRoute','ui.bootstrap']);
+var app = angular.module('app', ['restangular', 'ngRoute','ui.bootstrap','angular-echarts3']);
 
 // app.run([
 //     '$rootScope', '$modalStack',
@@ -77,7 +77,79 @@ app.controller("appController", function ($scope,$modal) {
 	            }
 	          }
 	        });
-	  };
+      };
+
+      var data = [{domain:'man',name:'남',value:Math.floor(Math.random() * 5555)},
+                    {domain:'woman',name:'여',value:Math.floor(Math.random() * 5555)}]
+      $scope.chart1 = activity_simple_chart(data);
+      var data1 = [];
+      for (var i=0;i<24;i++) {
+        data1.push(Math.floor(Math.random() * 99999))
+      }
+      $scope.chart2 = activity_simple_line_chart(data1);
+
+      function activity_simple_chart(data1) {
+        return {
+            title: {
+                show: false,
+                text: '남성/여성 통계',
+                subtext: '남여 통계',
+                x: 'center'
+            },
+
+            tooltip: {
+                trigger: 'item',
+                formatter: "{b} {d}%"
+            },
+            legend: {
+                show: false, orient: 'vertical',
+                left: 'left', data: ['man','woman']
+            },
+            series: [{
+                name: '성별?',
+                type: 'pie',
+                radius: '55%',
+                center: ['50%', '60%'],
+                data: data1
+            }]
+        }
+    }
+
+
+    // 지역분포
+    function activity_simple_line_chart(data1) {
+        return {
+            title: {
+                show: false,
+                text: '지역통계 통계',
+                subtext: '지역 통계',
+                x: 'center'
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'shadow'
+                }
+            },
+            xAxis : [
+                {
+                    type : 'value',
+                    boundaryGap: [0, 0.01]
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'category',
+                    data: ['강남구','강동구','강북구','강서구','관악구','광진구','구로구','금천구','노원구','도봉구','동대문구','동작구','마포구','서대문구','서초구','성동구','성북구','송파구','양천구','영등포구','용산구','은평구','종로구','중구','중랑구']
+                }
+            ],
+            series: [{
+                name: '인원수',
+                type:'bar',
+                data: data1
+            }]
+        }
+    }
 });
 
 

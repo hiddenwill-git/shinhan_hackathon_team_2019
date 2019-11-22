@@ -2,22 +2,28 @@
   {
     "target_id": 1,
     "target_group_name": "신혼부부",
-    "job": 1,
-    "age": 3,
-    "child": 0
+    "barket": {
+      "job": 1,
+      "age": 2,
+      "children": 0
+    }
   },
   {
     "target_id": 2,
     "target_group_name": "주부_소형SUV",
-    "job": 2,
-    "age": 5,
-    "child": 0
+    "barket": {
+      "job": 2,
+      "age": 5,
+      "children": 3
+    }
   },
   {
     "target_id": 3,
-    "target_group_name": "tests",
-    "job": 3,
-    "age": 7,
-    "child": 2
+    "target_group_name": "전기차",
+    "barket": {
+      "job": 2,
+      "age": 2,
+      "children": 2
+    }
   }
 ]

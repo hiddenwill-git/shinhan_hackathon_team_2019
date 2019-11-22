@@ -13,6 +13,17 @@ var app = angular.module('app', ['restangular', 'ngRoute','ui.bootstrap','angula
 //     }
 // ])
 
+// c("관리자",
+// "전문가",
+// "사무_종사자",
+// "서비스_종사자",
+// "판매_종사자",
+// "농림_어업_종사자",
+// "기능_종사자",
+// "장치_및_기계조작_종사자",
+// "단순노무_종사자",
+// "군인")
+
 app.config(['$routeProvider', 'RestangularProvider', '$locationProvider',
     function ($routeProvider, RestangularProvider, $locationProvider) {
         RestangularProvider.setDefaultHeaders({
@@ -37,12 +48,75 @@ app.config(['$routeProvider', 'RestangularProvider', '$locationProvider',
                 }
                 return false;
             });
+        
+        RestangularProvider.addResponseInterceptor(function(data, operation, what, url, response, deferred) {
+            return angular.isArray(data) ? data : [data];
+        });
     }
 ])
+app.factory('API', function(Restangular){
+    return Restangular.withConfig(function(config){
+      config.setBaseUrl('/api/v1');
+    });
+});
 
+app.factory("_api", function(API,$timeout,$window) {
+	return function(prefix){
+		return {
+			get: function(arg1,arg2) {
+				return API.all(prefix).customGET(arg1,arg2);
+			},
+			post: function(arg1) {
+				return API.all(prefix).post(arg1);
+			},
+			remove: function(arg1) {
+				return API.all(prefix).customDELETE('',arg1);
+			}
+		}
+	}
+})
 
-app.controller("appController", function ($scope,$modal) {
+app.controller("appController", function ($scope,$modal,$window,$timeout,_api) {
     console.log('start app!');
+    $scope.model = {
+        baskets:[],
+        tags:''
+    };
+
+    _api('baskets')
+      .get()
+      .then(function(res) {
+        if (res[0].result_msg == 'STATUS_NORMAL') {
+            $scope.model.baskets = res[0].result_data;
+        }
+    })
+    
+    $scope.read_basket = function(basket) {
+        var t = [];
+        for(var p in basket) {
+            
+            if (p != 'target_group_name' && p != 'target_id') {
+                t.push(p + ':' + basket[p]);
+                // console.log(t);
+            }
+        }
+        $scope.model.tags = null;
+        $scope.model.tags = "a,b,c";
+        console.log($scope.model.tags);
+        $timeout(function() {
+            $window.dispatchEvent(new Event("resize"));
+            console.log('apply');
+            $scope.model.tags = "a,b,c";
+            $scope.$apply(function(){
+                $scope.model.tags = "a,b,c";
+            });
+                
+            
+        }, 100);
+    }
+    $scope.model.tags = "120~30대,여자,남자,대한민국 거주,미혼,자녀 무,주택 무,자동차 유,보우자산 1억 ~ 2억,신용카드 월 사용액 200만원,최근카드 소비성향 키워드 : 결혼준비";
+    
+    
     // btn btn-default btn-sm
     $scope.toggle = {
         items:[{selected_index:-1,label:'보유자산',style:'btn btn-default btn-sm'},
@@ -90,28 +164,85 @@ app.controller("appController", function ($scope,$modal) {
 
       function activity_simple_chart(data1) {
         return {
-            title: {
-                show: false,
-                text: '남성/여성 통계',
-                subtext: '남여 통계',
-                x: 'center'
-            },
-
             tooltip: {
                 trigger: 'item',
-                formatter: "{b} {d}%"
+                formatter: "{a} <br/>{b}: {c} ({d}%)"
             },
             legend: {
-                show: false, orient: 'vertical',
-                left: 'left', data: ['man','woman']
+                orient: 'vertical',
+                x: 'left',
+                data:['直达','营销广告','搜索引擎','邮件营销','联盟广告','视频广告','百度','谷歌','必应','其他']
             },
-            series: [{
-                name: '성별?',
-                type: 'pie',
-                radius: '55%',
-                center: ['50%', '60%'],
-                data: data1
-            }]
+            series: [
+                {
+                    name:'성별',
+                    type:'pie',
+                    selectedMode: 'single',
+                    radius: [0, '30%'],
+        
+                    label: {
+                        normal: {
+                            position: 'inner'
+                        }
+                    },
+                    labelLine: {
+                        normal: {
+                            show: false
+                        }
+                    },
+                    data:[
+                        {value:1, name:'남'},
+                        {value:1, name:'여'}
+                    ]
+                },
+                {
+                    name:'연령',
+                    type:'pie',
+                    radius: ['40%', '55%'],
+                    label: {
+                        normal: {
+                            formatter: '{a|{a}}{abg|}\n{hr|}\n  {b|{b}：}{c}  {per|{d}%}  ',
+                            backgroundColor: '#eee',
+                            borderColor: '#aaa',
+                            borderWidth: 1,
+                            borderRadius: 4,
+                            rich: {
+                                a: {
+                                    color: '#999',
+                                    lineHeight: 22,
+                                    align: 'center'
+                                },
+                                hr: {
+                                    borderColor: '#aaa',
+                                    width: '100%',
+                                    borderWidth: 0.5,
+                                    height: 0
+                                },
+                                b: {
+                                    fontSize: 12,
+                                    lineHeight: 33
+                                },
+                                per: {
+                                    color: '#eee',
+                                    backgroundColor: '#334455',
+                                    padding: [2, 4],
+                                    borderRadius: 2
+                                }
+                            }
+                        }
+                    },
+                    data:[
+                        {value:1, name:'10대'},
+                        {value:2, name:'20대'},
+                        {value:1, name:'30대'},
+                        {value:2, name:'40대'},
+                        {value:1, name:'10대'},
+                        {value:2, name:'20대'},
+                        {value:1, name:'30대'},
+                        {value:2, name:'40대'}
+                    ]
+                }
+            ]
         }
     }
 
@@ -162,3 +293,21 @@ app.controller('PopupController', function($scope,$modal,$timeout,$modalInstance
 
     }
 })
+
+
+
+app.filter('isEmpty', function () {
+    return function (val) {
+      return (val == undefined || val.length === 0 || !val.trim());
+    };
+});
+
+
+app.filter('tag_meta_to_value', function () {
+    return function(tag) {
+        return tag == 'job' ?'직업' :
+            tag == 'age' ? '나이대' :
+            tag == 'child' ? '자녀수' :
+            tag;
+    }
+});

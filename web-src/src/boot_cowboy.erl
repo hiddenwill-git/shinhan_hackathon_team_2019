@@ -83,8 +83,9 @@ dispatch(HandlerOpts) ->
       %% front end
       %% 사용자 아이디별 데이터 조회
       {"/api/v1/resource/:user_id",v1_user_resource, HandlerOpts },
-      {"/api/v1/memo/:id",api_v1_memo, HandlerOpts },
+      {"/api/v1/query",v1_query_target, HandlerOpts },
       {"/api/v1/memo",api_v1_memo, HandlerOpts },
+      {"/api/v1/baskets",v1_tag_baskets, HandlerOpts },
       {"/api/v1/memos/:page_num",api_v1_memos, HandlerOpts }
 
       %% back end 

@@ -1,0 +1,33 @@
+Rows = boot_key_server:get("data_set1_re.json").
+
+lists:foldl(fun(Row,Acc)->
+    case proplists:get_value(<<"profile_address">>,Row) == boot_util:characters_to_binary("서울시") of
+        true -> Acc ++ [Row];
+        _ -> Acc
+    end
+end,[],Rows).
+
+boot_util:characters_to_binary("사용자A")
+
+
+{
+    "profile_user_id": "custom_6f33f",
+    "profile_sex": "M",
+    "profile_job": "군인",
+    "profile_age": 39,
+    "profile_address": "서울시",
+    "profile_during_month": 39,
+    "profile_kcb": 2,
+    "finance1_debt_remain": 29956,
+    "finance1_assets_interest": 0.02,
+    "finance1_assets_income": 1995,
+    "finance1_assets_amount": 68978,
+    "finance2_card_expense_amount": 1248,
+    "finance2_installments": 2,
+    "finance2_cul_point": 5995,
+    "finance2_use_point": 2205,
+    "finance2_lapse_point": 2205,
+    "finance2_point_code": "b03",
+    "finance2_main_card": "신한_The_LADY_CLASSIC",
+    "finance2_sow": 0.1
+  }

@@ -28,4 +28,17 @@ task({v1_user_resource,UserID}) ->
 	 	[<<"/promotions/add_img1.png">>,
 		 <<"/promotions/add_img2.png">>,
 		 <<"/promotions/add_img3.png">>]
-	 }].
+	 }];
+
+task(v1_tag_baskets) ->
+	boot_key_server:get("test_basket.json").
+
+query() ->
+	Rows = boot_key_server:get("data_set1_re.json"),
+
+	lists:foldl(fun(Row,Acc)->
+		case proplists:get_value(<<"profile_address">>,Row) == boot_util:characters_to_binary("서울시") of
+			true -> Acc ++ [Row];
+			_ -> Acc
+		end
+	end,[],Rows).

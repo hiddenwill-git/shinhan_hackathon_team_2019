@@ -1,0 +1,28 @@
+{
+    "name": "angular-echarts3",
+    "version": "0.0.2",
+    "authors": [
+        "尹现伟 <ios@yinxianwei.cn>"
+    ],
+    "description": "angular baidu echarts3",
+    "main": "./dist/angular-echarts3.js",
+    "keywords": [
+        "angular",
+        "echarts",
+        "charts",
+        "baidu"
+    ],
+    "license": "MIT",
+    "homepage": "https://github.com/yinxianwei/angular-echarts3",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+        "angular": "~1.4.5",
+        "echarts": "^3.1.10"
+    }
+}

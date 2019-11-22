@@ -1,0 +1,12 @@
+*.beam
+*.log
+.rebar
+*/ebin
+deps/
+web-src/erl_crash.dump
+web-src/var/logs/crash.log.1
+web-src/var/logs/error.log.1
+web-src/var/logs/info.log.1
+web-src/var/logs/warning.log.1
+erl_crash.dump
+web-src/nohup.out

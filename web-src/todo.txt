@@ -1,0 +1,7 @@
+주간 사용자 랭킹 TOP 50
+주간 사용자 랭킹 키워드 => 사용자별, 전체
+
+
+sudo kill -9 $(ps aux | grep 'beam' | awk '{print $2}')
+
+sudo chown -R $USER:$USER ./var

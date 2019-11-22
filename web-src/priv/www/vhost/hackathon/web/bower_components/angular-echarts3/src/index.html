@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>angular echarts3</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+</head>
+
+<body ng-app="demoApp">
+    <div ng-controller="MainCtrl as main">
+        <mw-chart style="width: 40%;height:400px;left: 30px;;" ng-model="main.option">
+        </mw-chart>
+        <button ng-click="change()">切换</button>
+    </div>
+    <script type="text/javascript" src="./angular"></script>
+    <script type="text/javascript" src="./echarts/dist/echarts.min.js"></script>
+    <!-- <script type="text/javascript" src="./echarts/map/js/china.js"></script> -->
+    <!-- <script type="text/javascript" src="./echarts/map/js/world.js"></script> -->
+    <script src="./app/angular-echarts3.js"></script>
+    <script src="./app/app.js"></script>
+</body>
+
+</html>

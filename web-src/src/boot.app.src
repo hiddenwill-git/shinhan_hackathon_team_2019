@@ -1,0 +1,43 @@
+{application, boot,
+[{description, "Cowboy Bootstrap"},
+  {vsn, "0.1.0"},
+  {registered, []},
+  {applications, [
+    kernel,
+    stdlib,
+    sasl,
+    ssl,
+    os_mon,
+    runtime_tools,
+    crypto,
+    inets,
+    xmerl,
+    public_key,
+    syntax_tools,
+    compiler,
+    goldrush,
+    lager,
+    cowboy,
+    jsx,
+    ibrowse,
+    jose,
+    poolboy,
+    %ssdb,
+    uuid,
+    craterl,
+    cache,
+    iconv,
+    %emqttc,
+    
+    %eredis_poolboy,
+    %geohash,
+    hackney,
+    couchbeam,
+    eql
+  ]},
+  {mod, { boot, []}},
+  {modules,[boot_cowboy_middleware]},
+  {env, []}
+]}.
+
+

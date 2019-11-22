@@ -19,21 +19,7 @@
     lager,
     cowboy,
     jsx,
-    ibrowse,
-    jose,
-    poolboy,
-    %ssdb,
-    uuid,
-    craterl,
-    cache,
-    iconv,
-    %emqttc,
-    
-    %eredis_poolboy,
-    %geohash,
-    hackney,
-    couchbeam,
-    eql
+    cache
   ]},
   {mod, { boot, []}},
   {modules,[boot_cowboy_middleware]},

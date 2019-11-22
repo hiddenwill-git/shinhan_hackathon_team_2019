@@ -14,10 +14,8 @@ execute(Req, Env) ->
     case Referer == undefined of
     	true -> next;
     	_ -> 
-    		case re:run(Referer,["wordmeter.net|localhost|127.0.0.1|106.245.225.179"]) of
-    			nomatch -> 
-    				?INFO("#### referer=> ~p",[Referer]),
-    				monitoring:task({referer,Referer});
+    		case re:run(Referer,["127.0.0.1"]) of
+    			nomatch -> nothing;
     			_ -> next
     		end
     end,
@@ -27,35 +25,17 @@ execute(Req, Env) ->
 	    {ok, ReqFinal} = cowboy_req:reply(200, ReqMethod),
 	    {halt, ReqFinal};
 	_ ->
-		% case cowboy_req:body(Req) of
-		% 	{ok, Bin, _} ->	boot_metrics:received(Bin);
-		% 	_ -> next
-		% end,
 		{{Peer, _}, Req2} = cowboy_req:peer(Req),
 	    {Method, Req3} = cowboy_req:method(Req2),
 	    {Path, _Req4} = cowboy_req:path(Req3),
 	    
 	    case re:run(Path,["/css|/img|/js|.js|.ico"]) of
-	    	nomatch -> 
-	    		?INFO("######### ~p, ~p, ~p",[Peer,Method,Path]);
+	    	nomatch ->  nothing;
+	    		% ?INFO("######### ~p, ~p, ~p",[Peer,Method,Path]);
 	    	_ ->
 	    		next
 	    end,
-
-		
-		% ?INFO("peer ~p",[cowboy_req:peer(Req)]),
-		% ?INFO("~p ~n#peer ~p~n#host ~p~n#host_info ~p~n#path ~p~n#path_info ~p~n#url ~p~n",
-		% 	[
-		% 	Method,
-		% 	cowboy_req:peer(Req),
-		% 	cowboy_req:host(Req),
-		% 	cowboy_req:host_info(Req),
-		% 	cowboy_req:path(Req),
-		% 	cowboy_req:path_info(Req),
-		% 	cowboy_req:url(Req)
-		% 	]),
-	    %% continue as normal
-	    {ok, ReqMethod, Env}
+		{ok, ReqMethod, Env}
     end.
 
 %% ===================================================================

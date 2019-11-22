@@ -1,1 +1,1 @@
-# geochat_server
+# shinhan_hackathon_team_2019

@@ -113,7 +113,7 @@ update_dispatch() ->
     Port = boot_util:env(port),
     Dispatch = dispatch([{craterl, Ref}]),
     VHosts = boot_util:env(vhosts),
-    VHosts1 = VHosts ++ [ [{name,http},{domain,'_'},{port,Port},{static,"priv/www/vhost/wordmeter"}] ],
+    VHosts1 = VHosts ++ [ [{name,http},{domain,'_'},{port,Port},{static,"priv/www/vhost/hackathon"}] ],
     T = 
     lists:foldl(fun([{name,Name},{domain,Domain},{port,_Port},{static,Static}],Acc)->
         StaticFile = [{"/", cowboy_static, {file, Static ++ "/index.html"}},
@@ -131,7 +131,7 @@ vhost_cowboy(HandlerOpts) ->
     Dispatch = dispatch(HandlerOpts),
     VHosts = boot_util:env(vhosts),
 
-    VHosts1 = VHosts ++ [ [{name,http},{domain,'_'},{port,Port},{static,"priv/www/vhost/wordmeter"}] ],
+    VHosts1 = VHosts ++ [ [{name,http},{domain,'_'},{port,Port},{static,"priv/www/vhost/hackathon"}] ],
     % io:format("======VHosts1 ~p~n",[VHosts1]),
     T = 
     lists:foldl(fun([{name,Name},{domain,Domain},{port,_Port},{static,Static}],Acc)->

@@ -257,7 +257,9 @@
                                     <div class="form-group">
                                         <div class="col-md-6 col-xs-12">
                                             <p>
-                                                <button type="button" class="btn btn-default">신혼부부 여행상품 1</button>
+                                                <!-- class="btn btn-success" -->
+                                                <!-- btn-default btn-success -->
+                                                <button type="button" ng-class="btn_status">신혼부부 여행상품 1</button>
                                             </p>
                                             <p>
                                                 <button type="button" class="btn btn-default">신혼부부 여행상품 2</button>
@@ -279,6 +281,7 @@
 
                     </div>
 
+                    
                 </div>
             </div>
             <!-- END PAGE CONTENT WRAPPER -->
@@ -296,10 +299,17 @@
                 <div class="modal-body">
                     <div>
                         <p>Target Component</p>
-                        <button type="button" class="btn btn-default btn-sm">보유자산</button>
+                        <!-- <li ng-repeat="todo in todos" ng-class="{{todo.priority}}">
+                                <a href="#/todos/{{todo.id}}">{{todo.title}}</a>
+                                <p>{{todo.description}}</p>
+                              </li> -->
+                        <span ng-repeat="item in toggle.items">
+                            <button type="button" ng-click="toggle.click(item)" ng-class="item.style">{{item.label}}</button>
+                        </span>
+                        <!-- <button type="button" class="btn btn-default btn-sm">보유자산</button>
                         <button type="button" class="btn btn-default btn-sm">6개월내 결혼 가능성</button>
                         <button type="button" class="btn btn-default btn-sm">탈퇴 위험율</button>
-                        <button type="button" class="btn btn-default btn-sm">자동차 보유 유무</button>
+                        <button type="button" class="btn btn-default btn-sm">자동차 보유 유무</button> -->
                     </div>
 
                     <hr />

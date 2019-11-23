@@ -8,6 +8,7 @@ $(document).ready(function () {
     var ad1 = JSON.parse($.cookie('ad1'));
 
     if(ad1.type == 'back'){
+        $('#loding').hide();
         // $('#myModal').modal('toggle');
         $('#modalText').text('20점이 적립되었습니다');
         $('#myModal').modal('show');
@@ -15,10 +16,12 @@ $(document).ready(function () {
         // $('#myModal').show();
     }
     else if(ad1.type == 'pin'){
+        $('#loding').hide();
         $('#modalText').text('50점이 적립되었습니다');
         $('#myModal').modal('show');
     }
     else if(ad1.type == 'reserve'){
+        $('#loding').hide();
         $('#modalText').text('100점이 적립되었습니다');
         $('#myModal').modal('show');
     }
@@ -35,6 +38,9 @@ $(document).ready(function () {
     }, 900);
     // }
 
+    setTimeout(function () {
+        $('#loding').hide();
+    }, 800);
     var adNum = 0;
 
     setInterval(function () {
@@ -50,17 +56,17 @@ $(document).ready(function () {
     }, 7000);
 
     $('#backIndex').click(function (){
-        window.location.href = "http://localhost:8080/mobile/html/index.html";
+        window.location.href = "http://15.164.233.47:8080/mobile/html/background.html";
     });
 
     $('#tabtab').click(function () {
         $.cookie('tabkey', '황용식');
 
-        $("#tabtab").attr("href", "http://localhost:8080/mobile/html/tab_01.html");
+        $("#tabtab").attr("href", "http://15.164.233.47:8080/mobile/html/tab_01.html");
     })
 
     $('#backA').click(function () {
-        window.location.href = 'http://localhost:8080/mobile/html/lockscreen_01.html';
+        window.location.href = 'http://15.164.233.47:8080/mobile/html/lockscreen_01.html';
     })
 
     $('#adA').click(function () {
@@ -74,6 +80,8 @@ $(document).ready(function () {
             $.cookie('adImage', 'ad_04');
         }
     })
+
+    console.log(getCurl());
 });
 
 function startDate(){
@@ -98,19 +106,18 @@ function startTime(){
     $(".time").text(dateString);
 }
 
-function gogo(){
-    console.log('클릭요');
+function getCurl(){
     $.ajax({
-        type : "GET",
-        url : "http://localhost:8080/mobile/html/tab_02.html",
-        dataType : "text",
-        error : function() {
-            alert('통신실패!!');
+        type: "GET",
+        url : "http://15.164.233.47:8080/api/v1/resource/test12",
+        dataType: "json",
+        success: function (data) {
+            console.log(data);
+            return data;
         },
-        success : function(data) {
-            $('#wrap').html(data);
-            console.log('dfsdfjlk');
+        error: function (request, status, error) {
+            console.log('code : ' + request.status + '\n' + "message : " + request.responseText + '\n' + 'e : ');
+            return request;
         }
-
     });
 }

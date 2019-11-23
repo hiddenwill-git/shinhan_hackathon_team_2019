@@ -51,18 +51,18 @@ $(document).ready(function () {
     }, 7000);
 
     $('#backIndex').click(function (){
-        window.location.href = "http://localhost:8080/mobile/html/index.html";
+        window.location.href = "http://15.164.233.47:8080/mobile/html/background.html";
     });
 
     $('#tabtab').click(function () {
         // var tabCookie = {type : 'ad1', name : '황용식'};
         $.cookie('tabkey', '최향미');
 
-        $("#tabtab").attr("href", "http://localhost:8080/mobile/html/tab_01.html");
+        $("#tabtab").attr("href", "http://15.164.233.47:8080/mobile/html/tab_01.html");
     })
 
     $('#backA').click(function () {
-        window.location.href = 'http://localhost:8080/mobile/html/lockscreen_02.html';
+        window.location.href = 'http://15.164.233.47:8080/mobile/html/lockscreen_02.html';
     })
 
     $('#adA').click(function () {
@@ -76,6 +76,8 @@ $(document).ready(function () {
             $.cookie('adImage', 'ad_04');
         }
     })
+
+    console.log(getCurl());
 });
 
 function startDate(){
@@ -100,19 +102,18 @@ function startTime(){
     $(".time").text(dateString);
 }
 
-function gogo(){
-    console.log('클릭요');
+function getCurl(){
     $.ajax({
-        type : "GET",
-        url : "http://localhost:8080/mobile/html/tab_02.html",
-        dataType : "text",
-        error : function() {
-            alert('통신실패!!');
+        type: "GET",
+        url : "http://15.164.233.47:8080/api/v1/resource/test12",
+        dataType: "json",
+        success: function (data) {
+            console.log(data);
+            return data;
         },
-        success : function(data) {
-            $('#wrap').html(data);
-            console.log('dfsdfjlk');
+        error: function (request, status, error) {
+            console.log('code : ' + request.status + '\n' + "message : " + request.responseText + '\n' + 'e : ');
+            return request;
         }
-
     });
 }

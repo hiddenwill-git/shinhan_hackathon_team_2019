@@ -82,6 +82,14 @@ app.controller("appController", function ($scope, $modal, $window, $timeout, _ap
     // profile_sex=F,M&profile_job=10,7,6,9,4&profile_age=10,20,30,40&profile_married=true&profile_children=0,1,2,3,4
     $scope.model = {
         baskets: [],
+        target_groups:[
+            {label:'전체 조회 조건 그룹',tags:['성별:남자','성별:여자','연령대:10대','연령대:20대','연령대:30대','연령대:40대',
+            '직업:관리자','직업:전문가','직업:사무직','직업:서비스종사자','직업:자영업','직업:농/어업_종사자','직업:공무원','직업:주부','직업:무직','직업:군인',
+            '결혼유무:기혼','결혼유무:미혼','자녀수:없음','자녀수:1명','자녀수:2명','자녀수:3명','자녀수:4명이상']},
+            {label:'현대 자동차 하반기 판매 캠페인',tags:['결혼유무:기혼','연령대:20대','연령대:30대','자녀수:없음','자녀수:1명','자녀수:2명']},
+            {label:'신혼부부 대상 마케팅',tags:['결혼유무:기혼','연령대:20대','연령대:30대','자녀수:없음','자녀수:1명','자녀수:2명']},
+            {label:'자영업 대상 마케팅',tags:['직업:서비스종사자','직업:자영업','직업:농/어업_종사자']}
+        ],
         tags: '',
         sel1_opt:[{code:null,name:'선택'},{code:'M',name:'남성'},{code:'F',name:'여성'}],
         sel2_opt:[{code:null,name:'선택'},{code:'10',name:'10대'},
@@ -97,7 +105,12 @@ app.controller("appController", function ($scope, $modal, $window, $timeout, _ap
     $scope.sel3_selected = $scope.model.sel3_opt[0];
     $scope.sel4_selected = $scope.model.sel4_opt[0];
     $scope.sel5_selected = $scope.model.sel5_opt[0];
-
+    // group tag
+    $scope.load_target_tags = function(e) {
+        console.log(e.tags);
+        $scope.$broadcast('tagsinput:add',e.tags, $scope.tagsProperties.tagsinputId);
+    }
+    // tag
     $scope.onChange = function(e,id) {
         // console.log(e,id);
         if (e.code == null) return;
@@ -243,12 +256,24 @@ app.controller("appController", function ($scope, $modal, $window, $timeout, _ap
         });
         if (selected.length < 2 && is_selected) {
             item.style = 'btn btn-warning btn-sm';
-            item.selected_index = 1;
+            if ($scope.toggle.x_text == null) {
+                $scope.toggle.x_text = item.label;
+            } else {
+                $scope.toggle.y_text = item.label;
+            }
+            item.selected_index =0;
         } else {
             item.style = 'btn btn-default btn-sm';
+            if (is_selected) return;
+            if (item.label == $scope.toggle.x_text) {
+                $scope.toggle.x_text = null;
+            } else {
+                $scope.toggle.y_text = null;
+            }
             item.selected_index = -1;
         }
-
+        
+        console.log(item.style);
     }
 
     $scope.open = function (size) {

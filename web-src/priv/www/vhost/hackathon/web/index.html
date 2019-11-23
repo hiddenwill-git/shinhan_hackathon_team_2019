@@ -328,12 +328,9 @@
                                     <h4>저장된 Target Group</h4>
                                     <div class="form-group">
                                         <div class="col-xs-12">
-                                            <p>
-                                                <button type="button" class="btn btn-default">신혼부부 여행상품 1</button>
-                                            </p>
-                                            <p>
-                                                <button type="button" class="btn btn-default">신혼부부 여행상품 2</button>
-                                            </p>
+                                                <p ng-repeat="item in model.target_groups">
+                                                    <button type="button" ng-click="load_target_tags(item)" class="btn btn-default">{{ item.label }}</button>
+                                                </p>
                                         </div>
                                     </div>
 
@@ -360,63 +357,255 @@
     </div>
 
     <div id="modal1" class="modal fade">
-        <div class="modal-dialog widthMax1780">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">스마트 핀 뷰 : 현대 자동차 하반기 판매 캠페인</h4>
-                    <button type="button" class="close" data-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="modal-box-left">
-                        <div class="step01">
-                            <div class="step_title">
-                                <p>STEP 01 마케팅 대상군 세분화 </p>
-                                <p>X축과 Y축에 들어갈 컴포넌트를 설정하면 세분화된 마케팅 대상을 선별해 줍니다.</p>
+            <div class="modal-dialog widthMax1780">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">스마트 핀 뷰 : 현대 자동차 하반기 판매 캠페인</h4>
+                        <button type="button" class="close" data-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="modal-box-left">
+                            <div class="step01">
+                                <div class="step_title">
+                                    <p>STEP 01 마케팅 대상군 세분화  </p>
+                                    <p>X축과 Y축에 들어갈 컴포넌트를 설정하면 세분화된 마케팅 대상을 선별해 줍니다.</p>
+                                </div>
+                                <div class="tagetcomponent">
+                                    <div class="title">Taget Component</div>
+                                    <div class="tagetBox">
+                                        <!-- toggle -->
+                                        <span ng-repeat="item in toggle.items">
+                                            <button type="button" ng-click="toggle.click(item)" class="{{ item.style }} " >{{ item.label }}</button>
+                                        </span>
+                                        <!-- <ul ng-repeat="item in toggle">
+                                            <li><button type="button" class="">보유자산</button></li>
+                                            <li><button type="button" class="on">6개월 내 결혼 가능성</button></li>
+                                            <li><button type="button" class="on">탈퇴 위험율</button></li>
+                                            <li><button type="button" class="">자동차 보유 유무</button></li>
+                                            <li><button type="button" class="">이탈율</button></li>
+                                        </ul> -->
+                                    </div>
+                                </div>
+                                <div class="table">
+                                    <div class="table_title">
+                                        <dl>
+                                            <dt><p>{{ toggle.x_text }}</p></dt>
+                                            <dd><p>{{ toggle.y_text }}</p></dd>
+                                        </dl>
+                                    </div>
+                                    <div class="arrow_left_top">
+                                        <span class="arrow test_2"></span>
+                                        <p class="up">높음</p>
+                                        <p class="down">낮음</p>
+                                    </div>
+                                    <div class="arrow_right_bottom">
+                                        <span class="arrow test_4"></span>
+                                        <p class="down">낮음</p>
+                                        <p class="up">높음</p>
+                                    </div>
+                                    <div class="table_num">
+                                        <div class="num1 "><span>1</span><span>000명</span></div>
+                                        <div class="num2 "><span>2</span><span>000명</span></div>
+                                        <div class="num3 "><span>3</span><span>000명</span></div>
+                                        <div class="num4 "><span>4</span><span>000명</span></div>
+                                        <div class="num5 "><span>5</span><span>000명</span></div>
+                                        <div class="num6 "><span>6</span><span>000명</span></div>
+                                        <div class="num7 "><span>7</span><span>000명</span></div>
+                                        <div class="num8 "><span>8</span><span>000명</span></div>
+                                        <div class="num9 "><span>9</span><span>000명</span></div>
+                                        <!-- on00 / on10 / on20 / on30 / on40 / on50 / on60 / on70 / on80 / on90  -->
+                                    </div>
+                                    <div class="table_guide">
+                                        <img src="img/new/ton_card.png">
+                                        <span>밀집도를 나타냅니다.</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="modal-box-center">
-                        <div class="step02">
-                            <div class="step_title">
-                                <p>STEP 02 마케팅 대상별 프로모션 배치 </p>
-                                <p>세분화된 마케팅 대상을 상대로 수행할 프로모션을 설정해주세요.</p>
+                        <div class="modal-box-center">
+                            <div class="step02">
+                                <div class="step_title">
+                                    <p>STEP 02 마케팅 대상별 프로모션 배치 </p>
+                                    <p>세분화된 마케팅 대상을 상대로 수행할 프로모션을 설정해주세요.</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="modal-box-right">
-                        <div class="step03">
-                            <div class="step_title">
-                                <p>STEP 03 마케팅 예상 비용 및 반응율</p>
-                                <p>예상 비용 및 반응율은 다음과 같습니다.</p>
+                        <div class="modal-box-right">
+                            <div class="step03">
+                                <div class="step_title">
+                                    <p>STEP 03 마케팅 예상 비용 및 반응율</p>
+                                    <p>예상 비용 및 반응율은 다음과 같습니다.</p>
+                                </div>
                             </div>
                         </div>
+    
+                        <div class="promotion-box">
+                            <div class="promotion">
+                                <div class="promotion_A">
+                                    <div class="title">프로모션 1</div>
+                                    <dl>
+                                        <dt>프로모션명</dt>
+                                        <dd><input type="text"></dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>대상군</dt>
+                                        <dd>
+                                            <div class="promotion_btn">
+                                                <ul>
+                                                    <li><a href="" class="on">인당 단가 6,000원</a></li>
+                                                    <li><a href="" class="">인당 단가 6,000원</a></li>
+                                                    <li><a href="" class="">인당 단가 6,000원</a></li>
+                                                    <li><a href="" class="on">인당 단가 6,000원</a></li>
+                                                    <li><a href="" class="">인당 단가 6,000원</a></li>
+                                                    <li><a href="" class="">인당 단가 6,000원</a></li>
+                                                    <li><a href="" class="">인당 단가 6,000원</a></li>
+                                                    <li><a href="" class="">인당 단가 6,000원</a></li>
+                                                    <li><a href="" class="on">인당 단가 6,000원</a></li>
+                                                </ul>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <div class="promotion_B"><img src="img/new/promotion_next.png"></div>
+                                <div class="promotion_C">
+                                    <div class="resultBox">
+                                        <dl>
+                                            <dt>집행 인원</dt>
+                                            <dd>450명</dd>
+                                        </dl>
+                                        <dl>
+                                            <dt>인당 평균 광고집행 비용</dt>
+                                            <dd>30,000원</dd>
+                                        </dl>
+                                        <dl>
+                                            <dt>집행 예상 비용</dt>
+                                            <dd>1,350,000원</dd>
+                                        </dl>
+                                        <dl>
+                                            <dt>예상 반응율</dt>
+                                            <dd>30%</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="promotion">
+                                <div class="promotion_A">
+                                    <div class="title">프로모션 2</div>
+                                    <dl>
+                                        <dt>프로모션명</dt>
+                                        <dd><input type="text"></dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>대상군</dt>
+                                        <dd>
+                                            <div class="promotion_btn">
+                                                <ul>
+                                                    <li><a href="" class="">인당 단가 6,000원</a></li>
+                                                    <li><a href="" class="">인당 단가 6,000원</a></li>
+                                                    <li><a href="" class="">인당 단가 6,000원</a></li>
+                                                    <li><a href="" class="">인당 단가 6,000원</a></li>
+                                                    <li><a href="" class="">인당 단가 6,000원</a></li>
+                                                    <li><a href="" class="">인당 단가 6,000원</a></li>
+                                                    <li><a href="" class="">인당 단가 6,000원</a></li>
+                                                    <li><a href="" class="">인당 단가 6,000원</a></li>
+                                                    <li><a href="" class="">인당 단가 6,000원</a></li>
+                                                </ul>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <div class="promotion_B"><img src="img/new/promotion_next.png"></div>
+                                <div class="promotion_C">
+                                    <div class="resultBox">
+                                        <dl>
+                                            <dt>집행 인원</dt>
+                                            <dd>450명</dd>
+                                        </dl>
+                                        <dl>
+                                            <dt>인당 평균 광고집행 비용</dt>
+                                            <dd>30,000원</dd>
+                                        </dl>
+                                        <dl>
+                                            <dt>집행 예상 비용</dt>
+                                            <dd>1,350,000원</dd>
+                                        </dl>
+                                        <dl>
+                                            <dt>예상 반응율</dt>
+                                            <dd>30%</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="promotion">
+                                <div class="promotion_A">
+                                    <div class="title">프로모션 3</div>
+                                    <dl>
+                                        <dt>프로모션명</dt>
+                                        <dd><input type="text"></dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>대상군</dt>
+                                        <dd>
+                                            <div class="promotion_btn">
+                                                <ul>
+                                                    <li><a href="" class="">인당 단가 6,000원</a></li>
+                                                    <li><a href="" class="">인당 단가 6,000원</a></li>
+                                                    <li><a href="" class="">인당 단가 6,000원</a></li>
+                                                    <li><a href="" class="">인당 단가 6,000원</a></li>
+                                                    <li><a href="" class="">인당 단가 6,000원</a></li>
+                                                    <li><a href="" class="">인당 단가 6,000원</a></li>
+                                                    <li><a href="" class="">인당 단가 6,000원</a></li>
+                                                    <li><a href="" class="">인당 단가 6,000원</a></li>
+                                                    <li><a href="" class="">인당 단가 6,000원</a></li>
+                                                </ul>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <div class="promotion_B"><img src="img/new/promotion_next.png"></div>
+                                <div class="promotion_C">
+                                    <div class="resultBox">
+                                        <dl>
+                                            <dt>집행 인원</dt>
+                                            <dd>450명</dd>
+                                        </dl>
+                                        <dl>
+                                            <dt>인당 평균 광고집행 비용</dt>
+                                            <dd>30,000원</dd>
+                                        </dl>
+                                        <dl>
+                                            <dt>집행 예상 비용</dt>
+                                            <dd>1,350,000원</dd>
+                                        </dl>
+                                        <dl>
+                                            <dt>예상 반응율</dt>
+                                            <dd>30%</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
                     </div>
-                    <!--
-
-                    <div>
-                        <p>Target Component</p>
-                        <button type="button" class="btn btn-default btn-sm">보유자산</button>
-                        <button type="button" class="btn btn-default btn-sm">6개월내 결혼 가능성</button>
-                        <button type="button" class="btn btn-default btn-sm">탈퇴 위험율</button>
-                        <button type="button" class="btn btn-default btn-sm">자동차 보유 유무</button>
+    
+                    <div class="modal-footer">
+                        <div class="resultBox">
+                            <div class="title">최종결과</div>
+                            <ul>
+                                <li>집행 인원 :<span>450명</span></li>
+                                <li>인당 평균 광고집행 비용<span>30,000원</span></li>
+                                <li>집행 예상 비용<span>1,350,000원</span></li>
+                                <li>예상 반응율<span>30%</span></li>
+                            </ul>
+                        </div>
+                        <button href="#modal2" data-toggle="modal" class="btn btn-info">다음</button>
                     </div>
--->
-
-
-
-
-
-
+    
                 </div>
-                <!--
-                <div class="modal-footer">
-
-                    <button href="#modal2" data-toggle="modal" class="col-md-12 btn btn-info">다음</button>
-                </div>
-            -->
             </div>
         </div>
-    </div>
 
     <div id="modal2" class="modal fade">
         <div class="modal-dialog">

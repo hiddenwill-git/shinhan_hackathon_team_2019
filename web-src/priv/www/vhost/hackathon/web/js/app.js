@@ -109,11 +109,14 @@ app.controller("appController", function ($scope, $modal, $window, $timeout, _ap
     // group tag
     $scope.load_target_tags = function(e) {
         // console.log(e.tags);
+        $scope.$broadcast('tagsinput:clear', $scope.tagsProperties.tagsinputId);
         $scope.$broadcast('tagsinput:add',e.tags, $scope.tagsProperties.tagsinputId);
     }
     // tag
     $scope.onChange = function(e,id) {
-        // console.log(e,id);
+
+        console.log('onChange',e,id);
+        // return;
         if (e.code == null) return;
         var prefix = id == 'sel1' ? '성별' : 
                 id == 'sel2' ? '연령대' :
@@ -155,6 +158,8 @@ app.controller("appController", function ($scope, $modal, $window, $timeout, _ap
     }
 
     $scope.onTagsChange = function(data) {
+        console.log('onTagsChange',data);
+        // return;
         var meta = {profile_sex:[],profile_job:[],profile_age:[],profile_married:[],profile_children:[]};
         data.tags.forEach(function (n) {
             var t = n.split(":");
@@ -194,10 +199,16 @@ app.controller("appController", function ($scope, $modal, $window, $timeout, _ap
             }
         };
         // console.log(meta1);
-        load_chart_by_tags(meta1);
+        // load_chart_by_tags(meta1);
         // 팝업에서 사용하자!
         $scope.last_meta_query = meta1;
     };
+
+    $scope.$watch('last_meta_query', function(newValue, oldValue) {
+        // console.log(newValue, oldValue);
+        console.log('$watch > ',$scope.last_meta_query);
+        load_chart_by_tags($scope.last_meta_query);
+    }, true);
     
 
     $scope.onTagsAdded = function(data) {
@@ -216,13 +227,13 @@ app.controller("appController", function ($scope, $modal, $window, $timeout, _ap
         placeholder: '원하는 검색 조건 테그를 입력하세요.'
     };
 
-    _api('baskets')
-        .get()
-        .then(function (res) {
-            if (res[0].result_msg == 'STATUS_NORMAL') {
-                $scope.model.baskets = res[0].result_data;
-            }
-        })
+    // _api('baskets')
+    //     .get()
+    //     .then(function (res) {
+    //         if (res[0].result_msg == 'STATUS_NORMAL') {
+    //             $scope.model.baskets = res[0].result_data;
+    //         }
+    //     })
 
     $scope.$watch('model.tags', function (newValue, oldValue) {
         console.log(newValue, oldValue);

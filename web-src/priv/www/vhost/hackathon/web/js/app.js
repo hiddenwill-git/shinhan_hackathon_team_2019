@@ -124,6 +124,7 @@ app.controller("appController", function ($scope, $modal, $window, $timeout, _ap
     }
 
     function load_chart_by_tags(param) {
+        return; // end
         _api('query')
             // profile_sex=F,M&profile_job=10,7,6,9,4&profile_age=10,20,30,40&profile_married=true&profile_children=0,1,2,3,4
             // .get('target', { profile_sex: 'F,M', profile_job: '10,7,6,9,4', profile_age: '10,20,30,40', profile_married: true, profile_children: '0,1,2,3,4' })
@@ -423,7 +424,7 @@ app.controller("appController", function ($scope, $modal, $window, $timeout, _ap
     for (var i = 0; i < 24; i++) {
         data1.push(Math.floor(Math.random() * 99999))
     }
-      $scope.chart_tab1_1 = activity_simple_line_chart(data1);
+    //   $scope.chart_tab1_1 = activity_simple_line_chart(data1);
 
     function activity_simple_chart(title, data1) {
         var peoples = data1[0];
@@ -510,6 +511,95 @@ app.controller("appController", function ($scope, $modal, $window, $timeout, _ap
         }
     }
 
+    pro();
+    function pro() {
+        _api('query')
+           .get('promotion_user_status','')
+        .then(function (res) {
+            if (res[0].result_msg == 'STATUS_NORMAL') {
+                var data = res[0].result_data;
+                // var page1 = data.page1[0];
+                // var chart = [[],[]];
+                // page1.forEach(function(n){
+                //     chart[0].push(n.timeslot);
+                //     chart[1].push(n.freq);
+                // });
+                $scope.chart_tab1_1 = promotion_chart(data.page1[0]);
+                $scope.chart_tab1_2 = promotion_chart(data.page1[1]);
+                $scope.chart_tab1_3 = promotion_chart(data.page1[2]);
+
+                $scope.chart_tab2_1 = promotion_chart(data.page2[0]);
+                $scope.chart_tab2_2 = promotion_chart(data.page2[1]);
+                $scope.chart_tab2_3 = promotion_chart(data.page2[2]);
+
+                $scope.chart_tab3_1 = promotion_chart(data.page3[0]);
+                $scope.chart_tab3_2 = promotion_chart(data.page3[1]);
+                $scope.chart_tab3_3 = promotion_chart(data.page3[2]);
+            }
+        })
+    }
+
+    function promotion_simple_chart(rows) {
+        return {
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'shadow'
+                }
+            },
+            xAxis: [
+                {
+                    type: 'value',
+                    boundaryGap: [0, 0.01]
+                }
+            ],
+            yAxis: [
+                {
+                    type: 'category',
+                    data: cat
+                }
+            ],
+            series: [{
+                name: '인원수',
+                type: 'bar',
+                data:data
+            }]
+        }
+    }
+
+    function promotion_chart(rows) {
+        var cat = [];
+        var data = [];
+        rows.forEach(function(n){
+            cat.push(n.timeslot);
+            data.push(n.freq);
+        });
+        return {
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'shadow'
+                }
+            },
+            xAxis: [
+                {
+                    type: 'value',
+                    boundaryGap: [0, 0.01]
+                }
+            ],
+            yAxis: [
+                {
+                    type: 'category',
+                    data: cat
+                }
+            ],
+            series: [{
+                name: '인원수',
+                type: 'bar',
+                data:data
+            }]
+        }
+    }
     
     // 지역분포
     function activity_simple_line_chart(data1) {

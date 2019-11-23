@@ -266,7 +266,7 @@
                         <div class="whiteBox">
                             <div class="panel panel-default" id="panelTag">
                                 <div class="panel-body">
-                                    <h5>핀마켓이 제안하는 유사 타게팅 Tag: 해당 그룹은 아래와 같은 그룹일 가능성이 높아요!</h5>
+                                    <h5>핀마켓이 제안하는 유사 타게팅 Tag: 해당 그룹은 아래와 같은 그룹일 가능성이 요!</h5>
                                     <!-- <span class="label label-default label-form">#신혼부부</span>
                                     <span class="label label-primary label-form">#결혼준비</span>
                                     <span class="label label-success label-form">#여행족</span>
@@ -274,7 +274,7 @@
                                     <span class="label label-warning label-form">#즉흥적비자</span> -->
                                     <span ng-repeat="basket in model.baskets">
                                         <span href ng-click='read_basket(basket)'
-                                            class="label label-primary label-form">#{{basket.target_group_name}}</span>
+                                            class="label label-warning label-form">#{{basket.target_group_name}}</span>
                                     </span>
                                 </div>
                             </div>
@@ -618,32 +618,29 @@
                                                     <div class="panel_table_row">
                                                         <div class="table_01">
                                                             <div class="title">대상 군이 휴대폰을 자주 보는 시간대</div>
-                                                            <!-- <div class="grapharea"> -->
-                                                                    <!-- top:    60,
-                                                                    bottom: 60,
-                                                                    left:   '10%',
-                                                                    right:  '10%', -->
-                                                                    <mw-chart style="width: 800px;height:400px;top:0;;left: 0"
+                                                                    <mw-chart style="width: 550px;height:320px;top:0;;left: 0"
                                                                     ng-model="chart_tab1_1">
                                                                     </mw-chart>
-                                                            <!-- </div> -->
                                                         </div>
                                                         <div class="table_02">
                                                             <div class="title">대상 군의 예상 취침 시간대</div>
-                                                            <div class="grapharea"><img src="img/new/test_chart.png">
-                                                            </div>
+                                                            <mw-chart style="width: 550px;height:320px;top:0;;left: 0"
+                                                                    ng-model="chart_tab1_2">
+                                                                    </mw-chart>
                                                         </div>
                                                     </div>
                                                     <div class="panel_table_row">
                                                         <div class="table_03">
                                                             <div class="title">대상 군이 무반응 확률이 높은 시간대</div>
-                                                            <div class="grapharea"><img src="img/new/test_chart.png">
-                                                            </div>
+                                                            <mw-chart style="width: 550px;height:320px;top:0;;left: 0"
+                                                            ng-model="chart_tab1_3">
+                                                            </mw-chart>
                                                         </div>
                                                         <div class="table_04">
                                                             <div class="title">대상 군의 프로모션 긍정 반응률</div>
-                                                            <div class="grapharea"><img src="img/new/test_chart.png">
-                                                            </div>
+                                                            <mw-chart style="width: 550px;height:320px;top:0;;left: 0"
+                                                                    ng-model="chart_tab1_1">
+                                                                    </mw-chart>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -654,12 +651,15 @@
                                                     <div class="title">배너 이미지</div>
                                                     <form role="form" class="form-horizontal">
                                                         <div class="form-group">
-                                                            <select class="form-control select">
-                                                                <option>Option 1</option>
+                                                            <select class="form-control select" style="width:300px;height:100px;">
+                                                                <option style="background-image:url(img/new/banner_03.jpg.jpeg);">2020베뉴 사전예약</option>
+                                                                <option style="background-image:url(img/new/ad2.jpeg);">팰리세이드 인스페레이션</option>
+                                                                <option style="background-image:url(img/new/ad3.jpeg);">연비의 절대강자 IONIC hybrid</option>
+                                                                <!-- <option>Option 1</option>
                                                                 <option>Option 2</option>
                                                                 <option>Option 3</option>
                                                                 <option>Option 4</option>
-                                                                <option>Option 5</option>
+                                                                <option>Option 5</option> -->
                                                             </select>
                                                         </div>
                                                     </form>
@@ -669,11 +669,7 @@
                                                     <form role="form" class="form-horizontal">
                                                         <div class="form-group">
                                                             <select class="form-control select">
-                                                                <option>Option 1</option>
-                                                                <option>Option 2</option>
-                                                                <option>Option 3</option>
-                                                                <option>Option 4</option>
-                                                                <option>Option 5</option>
+                                                                <option>선택</option>
                                                             </select>
                                                         </div>
                                                     </form>
@@ -769,25 +765,29 @@
                                                     <div class="panel_table_row">
                                                         <div class="table_01">
                                                             <div class="title">대상 군이 휴대폰을 자주 보는 시간대</div>
-                                                            <div class="grapharea"><img src="img/new/test_chart.png">
-                                                            </div>
+                                                            <mw-chart style="width: 550px;height:320px;top:0;;left: 0"
+                                                                    ng-model="chart_tab2_1">
+                                                                    </mw-chart>
                                                         </div>
                                                         <div class="table_02">
                                                             <div class="title">대상 군의 예상 취침 시간대</div>
-                                                            <div class="grapharea"><img src="img/new/test_chart.png">
-                                                            </div>
+                                                            <mw-chart style="width: 550px;height:320px;top:0;;left: 0"
+                                                                    ng-model="chart_tab2_2">
+                                                                    </mw-chart>
                                                         </div>
                                                     </div>
                                                     <div class="panel_table_row">
                                                         <div class="table_03">
                                                             <div class="title">대상 군이 무반응 확률이 높은 시간대</div>
-                                                            <div class="grapharea"><img src="img/new/test_chart.png">
-                                                            </div>
+                                                            <mw-chart style="width: 550px;height:320px;top:0;;left: 0"
+                                                                    ng-model="chart_tab2_3">
+                                                                    </mw-chart>
                                                         </div>
                                                         <div class="table_04">
                                                             <div class="title">대상 군의 프로모션 긍정 반응률</div>
-                                                            <div class="grapharea"><img src="img/new/test_chart.png">
-                                                            </div>
+                                                            <mw-chart style="width: 550px;height:320px;top:0;;left: 0"
+                                                                    ng-model="chart_tab2_3">
+                                                                    </mw-chart>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -813,11 +813,7 @@
                                                     <form role="form" class="form-horizontal">
                                                         <div class="form-group">
                                                             <select class="form-control select">
-                                                                <option>Option 1</option>
-                                                                <option>Option 2</option>
-                                                                <option>Option 3</option>
-                                                                <option>Option 4</option>
-                                                                <option>Option 5</option>
+                                                                <option>선택</option>
                                                             </select>
                                                         </div>
                                                     </form>
@@ -913,28 +909,29 @@
                                                     <div class="panel_table_row">
                                                         <div class="table_01">
                                                             <div class="title">대상 군이 휴대폰을 자주 보는 시간대</div>
-                                                            <div class="grapharea">
-                                                                    
-                                                                <img src="img/new/test_chart.png">
-                                                            </div>
+                                                            <mw-chart style="width: 550px;height:320px;top:0;;left: 0"
+                                                                    ng-model="chart_tab3_1">
+                                                                    </mw-chart>
                                                         </div>
                                                         <div class="table_02">
                                                             <div class="title">대상 군의 예상 취침 시간대</div>
-                                                            <div class="grapharea"><img src="img/new/test_chart.png">
-                                                            </div>
+                                                            <mw-chart style="width: 550px;height:320px;top:0;;left: 0"
+                                                                    ng-model="chart_tab3_2">
+                                                                    </mw-chart>
                                                         </div>
                                                     </div>
                                                     <div class="panel_table_row">
                                                         <div class="table_03">
                                                             <div class="title">대상 군이 무반응 확률이 높은 시간대</div>
-                                                            <div class="grapharea"><img src="img/new/test_chart.png">
-                                                            </div>
+                                                            <mw-chart style="width: 550px;height:320px;top:0;;left: 0"
+                                                                    ng-model="chart_tab3_3">
+                                                                    </mw-chart>
                                                         </div>
                                                         <div class="table_04">
                                                             <div class="title">대상 군의 프로모션 긍정 반응률</div>
-                                                            <div class="grapharea">
-                                                                <img src="img/new/test_chart.png">
-                                                            </div>
+                                                            <mw-chart style="width: 550px;height:320px;top:0;;left: 0"
+                                                                    ng-model="chart_tab3_3">
+                                                                    </mw-chart>
                                                         </div>
                                                     </div>
                                                 </div>

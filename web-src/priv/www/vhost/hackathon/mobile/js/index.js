@@ -20,7 +20,7 @@ $(document).ready(function () {
     }
 
     $('#btA1').click(function() {
-        window.open("http://15.164.233.47:8080/mobile/html/lockscreen_01.html", "box_new", "width=420,height=780,scrollbars=no");
+        window.open("http://15.164.233.47:8080/mobile/html/lockscreen_01.html", "box_new", "width=420,height=780,scrollbars=no,resizable=yes");
     });
 
     $('#btA2').click(function() {

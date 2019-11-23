@@ -12,8 +12,6 @@ $(document).ready(function () {
         // $('#myModal').modal('toggle');
         $('#modalText').text('20점이 적립되었습니다');
         $('#myModal').modal('show');
-
-        // $('#myModal').show();
     }
     else if(ad1.type == 'pin'){
         $('#loding').hide();
@@ -41,6 +39,7 @@ $(document).ready(function () {
     setTimeout(function () {
         $('#loding').hide();
     }, 800);
+
     var adNum = 0;
 
     setInterval(function () {

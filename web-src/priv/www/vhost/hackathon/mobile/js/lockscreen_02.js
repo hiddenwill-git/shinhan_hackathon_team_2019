@@ -10,17 +10,18 @@ $(document).ready(function () {
     var ad = JSON.parse($.cookie('ad2'));
 
     if(ad.type == 'back'){
-        // $('#myModal').modal('toggle');
+        $('#loding').hide();
         $('#modalText').text('20점이 적립되었습니다');
         $('#myModal').modal('show');
-
-        // $('#myModal').show();
     }
     else if(ad.type == 'pin'){
+        $('#loding').hide();
         $('#modalText').text('50점이 적립되었습니다');
         $('#myModal').modal('show');
+
     }
     else if(ad.type == 'reserve'){
+        $('#loding').hide();
         $('#modalText').text('100점이 적립되었습니다');
         $('#myModal').modal('show');
     }
@@ -49,6 +50,10 @@ $(document).ready(function () {
         }
 
     }, 7000);
+
+    setTimeout(function () {
+        $('#loding').hide();
+    }, 800);
 
     $('#backIndex').click(function (){
         window.location.href = "http://15.164.233.47:8080/mobile/html/background.html";

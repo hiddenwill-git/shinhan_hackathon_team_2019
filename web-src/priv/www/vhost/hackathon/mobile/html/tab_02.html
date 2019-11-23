@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<title>2019 Shinhan Hackathon</title>
+<meta charset="utf-8">
+<meta http-equiv="Content-Language" content="ko">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densityDpi=medium-dpi" />
+<meta name="format-detection" content="telephone=no, address=no, email=no" />
+<link rel="stylesheet" type="text/css" href="../css/reset.css" />
+<link rel="stylesheet" type="text/css" href="../css/common.css" />
+<link rel="stylesheet" href="../css/swiper.min.css">
+	<script type="text/javascript" src="../../web/js/plugins/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="../../web/js/plugins/jquery/jquery-ui.min.js"></script>
+	<!--<script type="text/javascript" src="../../web/js/plugins/bootstrap/bootstrap.min.js"></script>-->
+	<script type="text/javascript" src="../js/tab.js"></script>
+	<script type="text/javascript" src="../js/jquery.cookie.js"></script>
+<style>
+
+</style>
+
+</head>
+	<body>
+		<div id="wrap" class="">
+			<header class="">
+				<img src="../img/common_top_left.png" class="top_left">
+				<img src="../img/common_top_right.png" class="top_right">
+			</header>
+
+			<div id="content" class="tab">
+				<div class="gnb">
+					<ul>
+						<li><a href="http://localhost:8080/mobile/html/tab_01.html"><img src="../img/gnb_01.png"></a></li>
+						<li><a href=""><img src="../img/gnb_02_on.png"></a></li>
+						<li><a href="" id="backA"><img src="../img/gnb_03.png"></a></li>
+					</ul>
+				</div>
+				<div class="info">
+					<div class="title"><span class="photo"><img src="../img/profile_photo.png"></span><span class="name">김신한</span>님의 똑똑한 금융라이프, 오늘도 함께합니다.</div>
+					<div class="card">
+						<div class="swiper-container">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">
+									<div class="radiusBox">
+										<div class="topArea">
+											<div class="linkbank"><a href="">연결계좌 >></a></div>
+											<div class="point"><span class="num">30,000P</span><span class="refresh"><a href=""><img src="../img/ico_refresh.png"></a></span></div>
+											<div class="history"><a href="">핀머니 적립내역 >></a></div>
+										</div>
+										<div class="btnArea">
+											<ul>
+												<li><a href="" id="remittance" class="remittance">송금하기</a></li>
+												<li><a href="" id="remitt" class="remittance">결제하기</a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="swiper-slide">
+									<div class="radiusBox">
+										<div class="card_back" id="premoniter"><img src="../img/card_back.png" id="backImage"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="ad_line">
+					<a href=""><img src="../img/s_ad_01.png"></a>
+				</div>
+				<div class="pinmoneyuse">
+					<div class="title">핀머니를 사용해보세요!</div>
+					<div class="use_box">
+						<ul>
+							<li><a href=""><img src="../img/ico_pinmoney_no.png"><p>금융혜택</p></a></li>
+							<li><a href=""><img src="../img/ico_pinmoney_no.png"><p>신한 기프트카드</p></a></li>
+							<li><a href=""><img src="../img/ico_pinmoney_no.png"><p>신한클럽</p></a></li>
+							<li><a href=""><img src="../img/ico_pinmoney_01.png"><p>카페</p></a></li>
+							<li><a href=""><img src="../img/ico_pinmoney_no.png"><p>배송상품</p></a></li>
+							<li><a href=""><img src="../img/ico_pinmoney_no.png"><p>외식</p></a></li>
+							<li><a href=""><img src="../img/ico_pinmoney_no.png"><p>편의점</p></a></li>
+							<li><a href=""><img src="../img/ico_pinmoney_no.png"><p>뷰티</p></a></li>
+							<li><a href=""><img src="../img/ico_pinmoney_no.png"><p>상품권</p></a></li>
+							<li><a href=""><img src="../img/ico_pinmoney_no.png"><p>문화생활</p></a></li>
+							<li><a href=""><img src="../img/ico_pinmoney_no.png"><p>기부하기</p></a></li>
+							<li><a href=""><img src="../img/ico_pinmoney_no.png"><p>기타</p></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="benefits">
+					<div class="title">지금, 핫한 금융 혜택이에요!</div>
+					<div class="benefits_box">
+						<ul>
+							<li><a href=""><img src="../img/product.png"></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<footer class="">
+				<img src="../img/common_bottom.png">
+			</footer>
+		</div>
+		<script src="../js/swiper.min.js"></script>
+		<script>
+            $('#remittance').click(function(){
+                $('#backImage').attr('src', '../img/card_back.png');
+            });
+
+            $('#remitt').click(function(){
+                $('#backImage').attr('src', '../img/ad_01.png');
+            });
+
+            var swiper = new Swiper('.swiper-container', {
+                effect: 'flip',
+                // loop: true,
+                grabCursor: true,
+                pagination: {
+                    el: '.swiper-pagination',
+                },
+                paginationClickable:true,
+                navigation: {
+                    nextEl: '.remittance',
+                    prevEl: '#premoniter',
+                },
+            });
+		</script>
+	</body>
+</html>

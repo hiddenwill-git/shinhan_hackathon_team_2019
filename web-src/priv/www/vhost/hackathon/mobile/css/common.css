@@ -1,0 +1,178 @@
+@charset "utf-8";
+
+/************************************************
+Version : Hackathon
+*************************************************/
+
+/* Layout */
+body{position:relative;}
+#wrap {z-index:1;position:relative;width:100%;min-width:320px;min-height:100%;height:100%; display: table;}
+#container{z-index:1;position:relative;max-width:100%;}
+
+/* header {z-index:400;position:fixed;left:0;right:0;top:0;width:100%;height:45px;background:transparent;} */
+/* footer{z-index:400;position:fixed;left:0;right:0;bottom:0;width:100%;height:54px;background:#fff;user-select: none;-webkit-user-select: none; -webkit-touch-callout: none;} */
+
+/* index */
+.start {background:url("http://shinhan-hackathon.com/resources/img/main_bg.jpg"); background-position:center; background-size:cover; background-repeat: no-repeat;}
+#container .persona {position:relative;width:100%; min-height:100%; padding:10vw 30px; background:url("http://shinhan-hackathon.com/resources/img/inner_bg.png"); background-position: 20px 20px; background-size: 100% auto; background-repeat: no-repeat; color:#fff;}
+#container .persona h2 {font-size:4rem; line-height:4rem; font-family: "OneShinhanBold";}
+#container .persona h3 {font-size:1.05rem;}
+#container .persona .personaBox {width:100%;padding-top:40px;}
+#container .persona .personaBox p {font-size:2rem;padding-bottom:30px;}
+#container .persona .personaBox dl {padding-bottom:10px; width:100%;}
+#container .persona .personaBox dl dt {font-size:1.3rem;}
+#container .persona .personaBox dl dd {font-size:1.2rem; padding:10px 0 0 10px;}
+#container .persona .personaBox dl dd button {display:block; width:100%; background: #fff; border-radius: 5px; padding:10px; color:#161f65;font-family: "OneShinhanMedium";}
+footer.start {position:absolute; bottom:10px; width:100%; padding:20px; background:transparent; text-align:center;}
+footer.start img {width:60%; height:auto;}
+
+/* common */
+header {z-index:400; width:100%; height:21px; background:transparent; display: table-row; overflow: hidden; background:#2f2f2f; clear: both;}
+header img.top_left {height:100%; float:left; }
+header img.top_right {height:100%; float:right;}
+footer {z-index:400; width:100%; height:43px; background:transparent; display: table-row;overflow: hidden; text-align:center; background:#f2f2f2;}
+footer img {height:100%;display: block; margin:0 auto;}
+#content{z-index: 1; position: relative; display: table; width:100%; min-height:100%; color:#333; }
+#content.tab {display: block; width:100vw;}
+
+/* lockscreen */
+.lockscreen {position: relative; left:0; top:0; width:100%; min-height:100%; background:red; overflow: hidden; display: table-row;}
+.screen_01 {background:url("../img/lockscreen_bg_01.png")no-repeat; width:100%; background-size:cover; }
+.screen_02 {background:url("../img/lockscreen_bg_02.png")no-repeat; width:100%; background-size:cover; }
+.screen_03 {background:url("../img/lockscreen_bg_03.png")no-repeat; width:100%; background-size:cover; }
+.lock_gnb {position: relative; left:0; top:10px; width:100%; height:35px; text-align: right; padding:0 10px; overflow: hidden;}
+.gnb_alignment {position: relative;overflow: hidden; display: inline-block; height:35px; line-height:35px;}
+.lock_point {float:left; color:#fff; background:url("../img/ico_point.png")no-repeat; background-size: 15px; background-position: center right; padding-right:23px; font-size:1.1rem;}
+.lock_menu_btn {float:left; padding-left:5px;}
+.lock_menu_btn a {width:35px; height:35px; padding:10px; }
+.lock_menu_btn img {width:15px; }
+.lock_time_ing {width:100%; color:#fff; padding:5vh 13vw 3vh 13vw;}
+.lock_time_ing .time {font-size:5rem;}
+.lock_time_ing .day {font-size:1.3rem; padding:0 .5rem; line-height:3rem;}
+.lock_time_ing .ing {padding:0 .8rem;}
+.lock_time_ing .ing img {width:200px;}
+.widget {position: relative; width:100%; margin-bottom:10px;}
+.widget a {position: relative; display: block; }
+.widget img {display: block; width:100%;}
+.widget_ad_text {position: absolute; top:0; right:0; width:70%; padding:5% 10% 5% 0;}
+.widget_ad_text .widget_ad_text_01 {font-size:1.3rem; font-family:OneShinhanMedium; color:#000; line-height:140%;}
+.widget_ad_text .widget_ad_text_02 {font-size:1.8rem; font-family:OneShinhanMedium; color:#2478be; line-height:180%;}
+.widget_ad_text .widget_ad_text_03 {width:100%; text-align: right; font-size:1.1rem; line-height:200%;}
+.widget_ad_text .widget_ad_text_04 {font-size:1.3rem; line-height:200%;}
+.widget_ad_text .widget_ad_text_04 span {text-decoration: underline;}
+.unlock_slide {position: relative; width:100%;}
+.unlock_slide button {width:100%; text-align: center; font-size:1.3rem; color:#fff; line-height:3rem; margin-top:30px;}
+
+/* ad area */
+.ad_top {position:relative;width:100%;height:50px;}
+.ad_top .title {width:100%; height:50px; background:#000; line-height:50px; color:#fff; padding-left:20px;font-size:1.8rem;}
+.ad_top .index_go {position: absolute;top:0;right:10px; height:50px;}
+.ad_top .index_go a {width:50px; height:50px;}
+.ad_top .index_go a img {display:block;width:50px;height:50px;}
+.ad_content {position:relative;}
+.ad_content img {position:relative;width:100%;}
+.ad_button {position: relative;width:100%;}
+.ad_button ul {display: table; width:100%;}
+.ad_button ul li {display: table-cell;width:50%;}
+.ad_button ul li a {}
+.ad_button ul li a img {width:100%;display: block;}
+
+/* tab common */
+.gnb {position: relative; width:100%;}
+.gnb ul {display: table; width:100%;}
+.gnb ul li {display: table-cell;}
+.gnb ul li a img {display:block; width:100%;}
+.info {position: relative;width:100%; background:#24aabe; padding:20px 20px 15px 20px;}
+.info .title {position: relative;width:100%;line-height: 23px; color:#fff; font-size:1.2rem;padding-bottom:10px;}
+.info .title span.photo {vertical-align: top; padding-right:5px;}
+.info .title span.photo img {width:23px; height:23px;}
+.info .card .swiper-container {width: 100%;height: 150px;}
+.info .card .swiper-slide {background-position: center;background-size: cover;width: 100%;height: 150px;}
+.info .card .swiper-slide .radiusBox {position: relative;width:100%; height:150px; background:#fff;border-radius: 10px;}
+.info .card .swiper-slide .radiusBox .topArea {position: relative; padding:20px; }
+.info .card .swiper-slide .radiusBox .topArea .linkbank {position:absolute; top:10px; right:12px; background:#eeeeee;border-radius: 20px; display: inline;padding:3px 10px 3px 15px; font-size:1.1rem;}
+.info .card .swiper-slide .radiusBox .topArea .point {padding:10px 20px 5px; overflow: hidden; clear: both; line-height:30px;}
+.info .card .swiper-slide .radiusBox .topArea .point .num {float:left; font-size:2.4rem;font-family:OneShinhanBold; }
+.info .card .swiper-slide .radiusBox .topArea .point .refresh {float:left;padding-top:6px; margin-left:5px;}
+.info .card .swiper-slide .radiusBox .topArea .point .refresh a {padding:5px; display: block;}
+.info .card .swiper-slide .radiusBox .topArea .point .refresh a img {display:block;width:13px; height:13px;}
+.info .card .swiper-slide .radiusBox .topArea .history {padding: 3px 20px;line-height: 1.3rem;font-size: 1.1rem;text-decoration: underline;}
+.info .card .swiper-slide .radiusBox .btnArea {position: absolute;bottom:0; width:100%; background:#eee;padding:0 20px;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;}
+.info .card .swiper-slide .radiusBox .btnArea ul {display: table;width:100%;}
+.info .card .swiper-slide .radiusBox .btnArea ul li {display:table-cell;width:50%;text-align: center;}
+.info .card .swiper-slide .radiusBox .btnArea ul li a {font-size: 1.4rem;font-family: OneShinhanMedium;line-height: 45px;}
+.ad_line {position:relative; width:100%;}
+.ad_line a {display: block;}
+.ad_line a img {width:100%; display: block;}
+.pinmoneyuse {position: relative; width:100%; background: #eee; padding:18px 20px;}
+.pinmoneyuse .title {font-size:1.3rem;font-family: OneShinhanMedium;line-height: 2rem; color:#000; padding-bottom:8px;}
+.pinmoneyuse .use_box {position: relative; width:100%; background:#fff; border-radius: 10px;padding:15px 10px;box-shadow: 2px 2px 2px 0.5px #ddd;}
+.pinmoneyuse .use_box ul {width:100%; overflow: hidden; clear: both;}
+.pinmoneyuse .use_box ul li {float:left; width:25%; text-align: center;padding:5px 0;}
+.pinmoneyuse .use_box ul li a {display: block;text-align: center;}
+.pinmoneyuse .use_box ul li a img {width:40px;height:40px;display: block; margin:0 auto;}
+.pinmoneyuse .use_box ul li a p {line-height:2.3rem;}
+.pinmoneyuse + .benefits {position: relative; width:100%; background: #eee; padding:0px 20px;}
+.benefits {position: relative; width:100%; background: #eee; padding:20px 20px;}
+.benefits .title {font-size:1.3rem;font-family: OneShinhanMedium;line-height: 2rem; color:#000; padding-bottom:8px;}
+.benefits .benefits_box {padding:0 0 15px 0;}
+.benefits .benefits_box ul {}
+.benefits .benefits_box ul li {padding-top:10px;}
+.benefits .benefits_box ul li:first-child {padding-top:0;}
+.benefits .benefits_box ul li dl {width:100%; display: table;}
+.benefits .benefits_box ul li dl dd {display: table-cell;}
+.benefits .benefits_box ul li dl dd:last-child {display: table-cell;padding-left:5px;}
+.benefits .benefits_box a {display: block;border-radius: 10px; box-shadow: 2px 2px 2px 0.5px #ddd;}
+.benefits .benefits_box a img {display: block; width:100%;height:88px;}
+.card_back {padding:30px; text-align: center;}
+.card_back img {width:200px;}
+
+/*******************************************************************************************
+  Media Query
+********************************************************************************************/
+
+@media all and (min-width:480px){
+
+}
+
+/* ipad pro*/
+@media all and (min-width:768px){
+}
+
+/* ipad */
+@media only screen and (min-width:415px)  and (max-width:768px) {
+}
+
+/* iphone6/7/8 plus */
+@media only screen and (min-width:200px)  and (max-width:414px) {
+}
+
+@media only screen and (min-width:375px)  and (max-width:414px) {
+}
+
+/* iphone6/7/8 */
+@media only screen and (min-width:320px) and (max-width:375px) {
+}
+
+/* samsung series */
+@media only screen and (max-width:360px) {
+}
+
+/* 저 해상도 대응*/
+@media only screen and (max-width:320px) {
+	.widget_ad_text .widget_ad_text_01 {font-size:1.1rem; font-family:OneShinhanMedium; color:#333; line-height:150%;}
+	.widget_ad_text .widget_ad_text_02 {font-size:1.8rem; font-family:OneShinhanMedium; color:#2478be; line-height:130%;}
+	.widget_ad_text .widget_ad_text_03 {width:100%; text-align: right; font-size:1rem; line-height:190%;}
+	.widget_ad_text .widget_ad_text_04 {font-size:1.2rem; line-height:180%;}
+}
+
+@media only screen and (min-width:320px) and (max-height:480px) {
+}
+
+/* sony */
+@media only screen and (min-height:480px) and (max-height:560px) {
+}
+
+/* iphone X 대응*/
+@media only screen and (max-width:375px)  and (min-height:812px) {
+}

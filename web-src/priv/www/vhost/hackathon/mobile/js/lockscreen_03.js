@@ -66,13 +66,15 @@ $(document).ready(function () {
         var aStr = $("#adImg").attr("src");
 
         console.log(aStr);
-        if(aStr.indexOf('widget_AD_03') != -1){
+        if (aStr.indexOf('widget_AD_03') != -1) {
             $.cookie('adImage', 'ad_03');
         }
-        else{
+        else {
             $.cookie('adImage', 'ad_04');
         }
-    })
+    });
+
+    console.log(getCurl());
 });
 
 function startDate(){
@@ -97,19 +99,18 @@ function startTime(){
     $(".time").text(dateString);
 }
 
-function gogo(){
-    console.log('클릭요');
+function getCurl(){
     $.ajax({
-        type : "GET",
-        url : "http://localhost:8080/mobile/html/tab_02.html",
-        dataType : "text",
-        error : function() {
-            alert('통신실패!!');
+        type: "GET",
+        url : "http://localhost:8080/api/v1/resource/test12",
+        dataType: "json",
+        success: function (data) {
+            console.log(data);
+            return data;
         },
-        success : function(data) {
-            $('#wrap').html(data);
-            console.log('dfsdfjlk');
+        error: function (request, status, error) {
+            console.log('code : ' + request.status + '\n' + "message : " + request.responseText + '\n' + 'e : ');
+            return request;
         }
-
     });
 }

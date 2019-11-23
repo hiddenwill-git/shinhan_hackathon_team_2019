@@ -20,15 +20,15 @@ $(document).ready(function () {
     }
 
     $('#btA1').click(function() {
-        window.open("http://localhost:8080/mobile/html/lockscreen_01.html", "box_new", "width=465,height=773,scrollbars=no,resizable=yes");
+        window.open("http://localhost:8080/mobile/html/lockscreen_01.html", "box_new", "width=410,height=780,scrollbars=no,resizable=yes");
     });
 
     $('#btA2').click(function() {
-        window.open("http://localhost:8080/mobile/html/lockscreen_02.html", "box_new", "width=465,height=773,scrollbars=no,resizable=yes");
+        window.open("http://localhost:8080/mobile/html/lockscreen_02.html", "box_new", "width=410,height=780,scrollbars=no,resizable=yes");
     });
 
     $('#btB1').click(function() {
-        window.open("http://localhost:8080/mobile/html/lockscreen_03.html", "box_new", "width=465,height=773,scrollbars=no,resizable=yes");
+        window.open("http://localhost:8080/mobile/html/lockscreen_03.html", "box_new", "width=410,height=780,scrollbars=no,resizable=yes");
     });
 });
 

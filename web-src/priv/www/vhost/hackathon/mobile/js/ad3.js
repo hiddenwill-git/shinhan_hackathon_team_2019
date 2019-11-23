@@ -1,7 +1,7 @@
 $(document).ready(function () {
-    var viewPortScale = 1 / window.devicePixelRatio;
-
-    $('#viewport').attr('content', 'user-scalable=no, initial-scale='+viewPortScale+', width=device-width');
+    // var viewPortScale = 1 / window.devicePixelRatio;
+    //
+    // $('#viewport').attr('content', 'user-scalable=no, initial-scale='+viewPortScale+', width=device-width');
 
     var cookieData = $.cookie('adImage');
 

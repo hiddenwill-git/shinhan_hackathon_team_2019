@@ -33,7 +33,7 @@ $(document).ready(function () {
     setInterval(startTime, 1000);
     setTimeout(function () {
         $('#myModal').modal('hide');
-    }, 900);
+    }, 1300);
 
     var adNum = 0;
 

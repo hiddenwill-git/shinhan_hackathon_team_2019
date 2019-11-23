@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/web-src/deps/cache" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/web-src/deps/cowboy" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/web-src/deps/cowlib" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/web-src/deps/goldrush" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/web-src/deps/jsx" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/web-src/deps/lager" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/web-src/deps/ranch" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/web-src/deps/reloader" vcs="Git" />
+  </component>
+</project>

@@ -1,7 +1,7 @@
 $(document).ready(function () {
-    var viewPortScale = 1 / window.devicePixelRatio;
-
-    $('#viewport').attr('content', 'user-scalable=no, initial-scale='+viewPortScale+', width=device-width');
+    // var viewPortScale = 1 / window.devicePixelRatio;
+    //
+    // $('#viewport').attr('content', 'user-scalable=no, initial-scale='+viewPortScale+', width=device-width');
 
     console.log('lockscreen_01');
 
@@ -33,7 +33,7 @@ $(document).ready(function () {
     setInterval(startDate, 1000);
     setTimeout(function () {
         $('#myModal').modal('hide');
-    }, 900);
+    }, 1300);
     // }
 
     setTimeout(function () {

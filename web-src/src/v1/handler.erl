@@ -40,7 +40,8 @@ task(v1_tag_baskets) ->
 query({v1_query_promotion,Contents}) ->
 	query({v1_query_target,Contents});
 query({v1_query_target,Contents}) ->
-	Rows = boot_key_server:get("data_set1_total.json"),
+	Rows = boot_key_server:get("data_set1_total_10000.json"),
+	% Rows = boot_key_server:get("data_set1_total.json"),
 	% Rows = boot_key_server:get("data_set1_re.json"),
 	filter({Rows,Contents}).
 

@@ -423,7 +423,7 @@ app.controller("appController", function ($scope, $modal, $window, $timeout, _ap
     for (var i = 0; i < 24; i++) {
         data1.push(Math.floor(Math.random() * 99999))
     }
-    //   $scope.chart2 = activity_simple_line_chart(data1);
+      $scope.chart_tab1_1 = activity_simple_line_chart(data1);
 
     function activity_simple_chart(title, data1) {
         var peoples = data1[0];
@@ -535,7 +535,7 @@ app.controller("appController", function ($scope, $modal, $window, $timeout, _ap
             yAxis: [
                 {
                     type: 'category',
-                    data: ['강남구', '강동구', '강북구', '강서구', '관악구', '광진구', '구로구', '금천구', '노원구', '도봉구', '동대문구', '동작구', '마포구', '서대문구', '서초구', '성동구', '성북구', '송파구', '양천구', '영등포구', '용산구', '은평구', '종로구', '중구', '중랑구']
+                    data: ['강남구', '강동구', '강북구', '강서구', '관악구', '광진구', '구로구']
                 }
             ],
             series: [{

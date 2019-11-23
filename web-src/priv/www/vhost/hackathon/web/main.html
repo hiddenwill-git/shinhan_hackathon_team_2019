@@ -602,11 +602,10 @@
                         <form class="form-horizontal">
                             <div class="panel panel-default tabs">
                                 <ul class="nav nav-tabs" role="tablist">
-                                    <li class="active"><a href="#tab-first" role="tab" data-toggle="tab">펠리세이드 2019
-                                            판매</a>
+                                    <li class="active"><a href="#tab-first" role="tab" data-toggle="tab">{{ promotion.summmary.title.prom1 }}</a>
                                     </li>
-                                    <li><a href="#tab-second" role="tab" data-toggle="tab">니로 판매</a></li>
-                                    <li><a href="#tab-third" role="tab" data-toggle="tab">펠리세이트 2019 판매 3</a></li>
+                                    <li><a href="#tab-second" role="tab" data-toggle="tab">{{ promotion.summmary.title.prom2 }}</a></li>
+                                    <li><a href="#tab-third" role="tab" data-toggle="tab">{{ promotion.summmary.title.prom3 }}</a></li>
                                 </ul>
                                 <div class="panel-body tab-content">
                                     <div class="tab-pane active" id="tab-first">
@@ -619,8 +618,15 @@
                                                     <div class="panel_table_row">
                                                         <div class="table_01">
                                                             <div class="title">대상 군이 휴대폰을 자주 보는 시간대</div>
-                                                            <div class="grapharea"><img src="img/new/test_chart.png">
-                                                            </div>
+                                                            <!-- <div class="grapharea"> -->
+                                                                    <!-- top:    60,
+                                                                    bottom: 60,
+                                                                    left:   '10%',
+                                                                    right:  '10%', -->
+                                                                    <mw-chart style="width: 800px;height:400px;top:0;;left: 0"
+                                                                    ng-model="chart_tab1_1">
+                                                                    </mw-chart>
+                                                            <!-- </div> -->
                                                         </div>
                                                         <div class="table_02">
                                                             <div class="title">대상 군의 예상 취침 시간대</div>
@@ -732,19 +738,19 @@
                                                 <div class="calculation">
                                                     <dl>
                                                         <dt>집행 인원</dt>
-                                                        <dd>450명</dd>
+                                                        <dd>{{ promotion.summmary.group1.f1 | num_comma }}명</dd>
                                                     </dl>
                                                     <dl>
                                                         <dt>인당 평균 광고집행 비용</dt>
-                                                        <dd>30,000원</dd>
+                                                        <dd>{{ promotion.summmary.group1.f2 | num_comma }}원</dd>
                                                     </dl>
                                                     <dl>
                                                         <dt>집행 예상 비용</dt>
-                                                        <dd>1,350,000원</dd>
+                                                        <dd>{{ promotion.summmary.group1.f3 | num_comma }}원</dd>
                                                     </dl>
                                                     <dl>
                                                         <dt>예상 반응율</dt>
-                                                        <dd>30%</dd>
+                                                        <dd>{{ promotion.summmary.group1.f4 }}%</dd>
                                                     </dl>
                                                 </div>
                                                 <div class="buttonArea">
@@ -907,7 +913,9 @@
                                                     <div class="panel_table_row">
                                                         <div class="table_01">
                                                             <div class="title">대상 군이 휴대폰을 자주 보는 시간대</div>
-                                                            <div class="grapharea"><img src="img/new/test_chart.png">
+                                                            <div class="grapharea">
+                                                                    
+                                                                <img src="img/new/test_chart.png">
                                                             </div>
                                                         </div>
                                                         <div class="table_02">
@@ -924,7 +932,8 @@
                                                         </div>
                                                         <div class="table_04">
                                                             <div class="title">대상 군의 프로모션 긍정 반응률</div>
-                                                            <div class="grapharea"><img src="img/new/test_chart.png">
+                                                            <div class="grapharea">
+                                                                <img src="img/new/test_chart.png">
                                                             </div>
                                                         </div>
                                                     </div>

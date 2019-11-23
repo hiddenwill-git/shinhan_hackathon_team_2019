@@ -112,15 +112,15 @@ $(function() {
         
         //Tagsinput
         var feTagsinput = function(){
-            if($(".tagsinput").length > 0){
-                $(".tagsinput").each(function(){  
-                    $(this).tagsInput({width: '100%',height:'auto',defaultText: '',
-                    onChange:function(e){
-                        // console.log(e);
-                    }});
-                });
+            // if($(".tagsinput").length > 0){
+            //     $(".tagsinput").each(function(){  
+            //         $(this).tagsInput({width: '100%',height:'auto',defaultText: '',
+            //         onChange:function(e){
+            //             // console.log(e);
+            //         }});
+            //     });
 
-            }
+            // }
         }// END Tagsinput
         
         //iCheckbox and iRadion - custom elements

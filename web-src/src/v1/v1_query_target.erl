@@ -46,16 +46,35 @@ forbidden(Req, State) ->
     {false, Req, State}.
 
 resource_exists(Req, State = #resource{method = <<"GET">>}) ->
-    UserID =
-        case cowboy_req:binding(user_id, Req) of
-            {undefined, _} -> 1;
-            {Val1, _} -> Val1
-        end,
+    {Query,_Req} = cowboy_req:qs_vals(Req),
+    Fields = [<<"profile_sex">>,{<<"profile_job">>,int},{<<"profile_age">>,int},
+        {<<"profile_married">>,atom},{<<"profile_children">>,int}],
 
-    Contents = [{<<"user_id">>,UserID}],
+    Contents = 
+        lists:foldl(fun
+            ({E,int},Acc)->
+                Acc ++ [{E,case ?GET(E,Query) of
+                    undefined -> undefined;
+                    E0 -> 
+                        [boot_util:int(X) || X<-re:split(E0,",")]
+                end}];
+            ({E,atom},Acc)->
+                Acc ++ [{E,case ?GET(E,Query) of
+                    undefined -> undefined;
+                    E0 -> 
+                        [boot_util:atom(X) || X<-re:split(E0,",")]
+                end}];
+            (E,Acc)->
+                Acc ++ [{E,case ?GET(E,Query) of
+                    undefined -> undefined;
+                    E1 -> re:split(E1,",")
+                end}]
+        end,[],Fields),
+        % profile_sex=M,F&profile_job=10,7,6,9,4&profile_age=10,20,30&profile_married=true,profile_children=0,1,2,3
+    
     Values = boot_util:get_value(
-      [{required,[<<"user_id">>]},
-       {optional,[]}],Contents),
+      [{required,[]},
+       {optional,Fields}],Contents),
     boot_misc:resource({required,Values,State,Req}).
 %%====================================================================
 %% GET and HEAD callbacks
@@ -63,14 +82,63 @@ resource_exists(Req, State = #resource{method = <<"GET">>}) ->
 to_json(Req, State = #resource{error_code = A}) when A =/= ?STATUS_NORMAL ->
     boot_misc:handle_exception({Req,State});
 
-to_json(Req, State) ->
-    Rows = handler:query(),
-    Res = [{<<"total">>,length(Rows)},{<<"rows">>,Rows}],
+to_json(Req, State = #resource{contents=Contents}) ->
+    % Res =Contents,
+    % ?INFO("@Contents ~p",[Contents]),
+    Rows = handler:query({?MODULE,Contents}),
+    % 직업별
+    % profile_sex : M,F
+    % profile_job : groupby
+
+    % profile_age : 10 20 30 40
+    % profile_job
+
+    Res = [{<<"profile_job">>,[
+        {<<"M">>,split(<<"profile_job_category">>,<<"M">>,Rows)},
+        {<<"F">>,split(<<"profile_job_category">>,<<"F">>,Rows)}]},
+
+        {<<"profile_family_cnt">>,[
+        {<<"M">>,split(<<"profile_married_count_category">>,<<"M">>,Rows)},
+        {<<"F">>,split(<<"profile_married_count_category">>,<<"F">>,Rows)}]},
+
+        {<<"finance2_main_expense">>,[
+        {<<"M">>,split(<<"finance2_main_expense">>,<<"M">>,Rows)},
+        {<<"F">>,split(<<"finance2_main_expense">>,<<"F">>,Rows)}]},
+    
+        {<<"finance1_assets_amount">>,[
+        {<<"M">>,split(<<"finance1_assets_amount_category">>,<<"M">>,Rows)},
+        {<<"F">>,split(<<"finance1_assets_amount_category">>,<<"F">>,Rows)}]}    
+    ],
+    % Res = [{<<"total">>,length(Rows)},{<<"rows">>,Rows}],
+    % chart갯수만 큼 분리필요
+
+% [{<<"user_id">>,UserID},
+% 	{<<"user_name">>,boot_util:characters_to_binary("사용자A")},
+% 	{<<"point">>,5000},
+% 	 {<<"promotions">>,
+% 	 	[<<"/promotions/add_img1.png">>,
+% 		 <<"/promotions/add_img2.png">>,
+% 		 <<"/promotions/add_img3.png">>]
+% 	 }]
+
+% {value:1, name:'10대'},
+% {value:2, name:'20대'},
+% {value:1, name:'30대'},
+% {value:2, name:'40대'},
+
+% {value:1, name:'10대'},
+% {value:2, name:'20대'},
+% {value:1, name:'30대'},
+% {value:2, name:'40대'}
     boot_misc:reply({Res,Req,State}).
 
 to_html(Req, State) ->
     {[], Req, State}.
-
 %%%===================================================================
 %%% Internal functions
 %%%===================================================================
+split(Field,Type,Rows) ->
+    L = [proplists:get_value(Field,E)||E<-Rows,proplists:get_value(<<"profile_sex">>,E) =:= Type],
+    lists:map(
+        fun(Item) -> { Item, length([Key || Key <- L, Key =:= Item]) } end,
+    lists:usort(L)).

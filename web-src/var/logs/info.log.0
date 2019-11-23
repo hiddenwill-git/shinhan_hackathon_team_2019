@@ -1,0 +1,70 @@
+2019-11-22 10:22:24.410 [info] boot_sup  [0;32m<log> [1;37m========================================================[0;38m
+2019-11-22 10:22:24.410 [info] boot_sup  [0;32m<log> [1;37m= ... Starting Server ... [0;38m
+2019-11-22 10:22:24.410 [info] boot_sup  [0;32m<log> [1;37m========================================================[0;38m
+2019-11-22 10:22:24.411 [info] boot_cowboy  [0;32m<log> [1;37m... Fetch File > "priv/data/data_set2_test_re.json"[0;38m
+2019-11-22 10:22:24.418 [info] boot_cowboy  [0;32m<log> [1;37m... Fetch File > "priv/data/data_set1_re.json"[0;38m
+2019-11-22 10:22:24.469 [info] boot_cowboy  [0;32m<log> [1;37mStart Cowboy Web Server Name > http Domain > '_', Static > "priv/www/vhost/wordmeter", Port > 80[0;38m
+2019-11-22 11:09:07.796 [info] boot_sup  [0;32m<log> [1;37m========================================================[0;38m
+2019-11-22 11:09:07.796 [info] boot_sup  [0;32m<log> [1;37m= ... Starting Server ... [0;38m
+2019-11-22 11:09:07.796 [info] boot_sup  [0;32m<log> [1;37m========================================================[0;38m
+2019-11-22 11:09:07.797 [info] boot_cowboy  [0;32m<log> [1;37m... Fetch File > "priv/data/data_set2_test_re.json"[0;38m
+2019-11-22 11:09:07.806 [info] boot_cowboy  [0;32m<log> [1;37m... Fetch File > "priv/data/data_set1_re.json"[0;38m
+2019-11-22 11:09:07.871 [info] boot_cowboy  [0;32m<log> [1;37mStart Cowboy Web Server Name > http Domain > '_', Static > "priv/www/vhost/wordmeter", Port > 80[0;38m
+2019-11-22 11:10:37.603 [info] boot_sup  [0;32m<log> [1;37m========================================================[0;38m
+2019-11-22 11:10:37.603 [info] boot_sup  [0;32m<log> [1;37m= ... Starting Server ... [0;38m
+2019-11-22 11:10:37.604 [info] boot_sup  [0;32m<log> [1;37m========================================================[0;38m
+2019-11-22 11:10:37.605 [info] boot_cowboy  [0;32m<log> [1;37m... Fetch File > "priv/data/data_set2_test_re.json"[0;38m
+2019-11-22 11:10:37.611 [info] boot_cowboy  [0;32m<log> [1;37m... Fetch File > "priv/data/data_set1_re.json"[0;38m
+2019-11-22 11:10:37.668 [info] boot_cowboy  [0;32m<log> [1;37mStart Cowboy Web Server Name > http Domain > '_', Static > "priv/www/vhost/wordmeter", Port > 80[0;38m
+2019-11-22 11:11:24.371 [info] boot_sup  [0;32m<log> [1;37m========================================================[0;38m
+2019-11-22 11:11:24.371 [info] boot_sup  [0;32m<log> [1;37m= ... Starting Server ... [0;38m
+2019-11-22 11:11:24.371 [info] boot_sup  [0;32m<log> [1;37m========================================================[0;38m
+2019-11-22 11:11:24.372 [info] boot_cowboy  [0;32m<log> [1;37m... Fetch File > "priv/data/data_set2_test_re.json"[0;38m
+2019-11-22 11:11:24.379 [info] boot_cowboy  [0;32m<log> [1;37m... Fetch File > "priv/data/data_set1_re.json"[0;38m
+2019-11-22 11:11:24.430 [info] boot_cowboy  [0;32m<log> [1;37mStart Cowboy Web Server Name > http Domain > '_', Static > "priv/www/vhost/wordmeter", Port > 80[0;38m
+2019-11-22 11:12:38.235 [info] boot_sup  [0;32m<log> [1;37m========================================================[0;38m
+2019-11-22 11:12:38.235 [info] boot_sup  [0;32m<log> [1;37m= ... Starting Server ... [0;38m
+2019-11-22 11:12:38.235 [info] boot_sup  [0;32m<log> [1;37m========================================================[0;38m
+2019-11-22 11:12:38.236 [info] boot_cowboy  [0;32m<log> [1;37m... Fetch File > "priv/data/data_set2_test_re.json"[0;38m
+2019-11-22 11:12:38.243 [info] boot_cowboy  [0;32m<log> [1;37m... Fetch File > "priv/data/data_set1_re.json"[0;38m
+2019-11-22 11:12:38.293 [info] boot_cowboy  [0;32m<log> [1;37mStart Cowboy Web Server Name > http Domain > '_', Static > "priv/www/vhost/hackathon", Port > 80[0;38m
+2019-11-22 11:12:43.660 [info] boot_sup  [0;32m<log> [1;37m========================================================[0;38m
+2019-11-22 11:12:43.660 [info] boot_sup  [0;32m<log> [1;37m= ... Starting Server ... [0;38m
+2019-11-22 11:12:43.660 [info] boot_sup  [0;32m<log> [1;37m========================================================[0;38m
+2019-11-22 11:12:43.661 [info] boot_cowboy  [0;32m<log> [1;37m... Fetch File > "priv/data/data_set2_test_re.json"[0;38m
+2019-11-22 11:12:43.668 [info] boot_cowboy  [0;32m<log> [1;37m... Fetch File > "priv/data/data_set1_re.json"[0;38m
+2019-11-22 11:12:43.723 [info] boot_cowboy  [0;32m<log> [1;37mStart Cowboy Web Server Name > http Domain > '_', Static > "priv/www/vhost/hackathon", Port > 80[0;38m
+2019-11-22 11:13:14.387 [info] boot_sup  [0;32m<log> [1;37m========================================================[0;38m
+2019-11-22 11:13:14.387 [info] boot_sup  [0;32m<log> [1;37m= ... Starting Server ... [0;38m
+2019-11-22 11:13:14.387 [info] boot_sup  [0;32m<log> [1;37m========================================================[0;38m
+2019-11-22 11:13:14.389 [info] boot_cowboy  [0;32m<log> [1;37m... Fetch File > "priv/data/data_set2_test_re.json"[0;38m
+2019-11-22 11:13:14.398 [info] boot_cowboy  [0;32m<log> [1;37m... Fetch File > "priv/data/data_set1_re.json"[0;38m
+2019-11-22 11:13:14.466 [info] boot_cowboy  [0;32m<log> [1;37mStart Cowboy Web Server Name > http Domain > '_', Static > "priv/www/vhost/hackathon", Port > 8080[0;38m
+2019-11-22 13:32:39.330 [info] boot_sup  [0;32m<log> [1;37m========================================================[0;38m
+2019-11-22 13:32:39.330 [info] boot_sup  [0;32m<log> [1;37m= ... Starting Server ... [0;38m
+2019-11-22 13:32:39.330 [info] boot_sup  [0;32m<log> [1;37m========================================================[0;38m
+2019-11-22 13:32:39.331 [info] boot_cowboy  [0;32m<log> [1;37m... Fetch File > "priv/data/data_set2_test_re.json"[0;38m
+2019-11-22 13:32:39.337 [info] boot_cowboy  [0;32m<log> [1;37m... Fetch File > "priv/data/data_set1_re.json"[0;38m
+2019-11-22 13:32:39.393 [info] boot_cowboy  [0;32m<log> [1;37mStart Cowboy Web Server Name > http Domain > '_', Static > "priv/www/vhost/hackathon", Port > 8080[0;38m
+2019-11-22 15:57:24.213 [info] boot_sup  [0;32m<log> [1;37m========================================================[0;38m
+2019-11-22 15:57:24.213 [info] boot_sup  [0;32m<log> [1;37m= ... Starting Server ... [0;38m
+2019-11-22 15:57:24.213 [info] boot_sup  [0;32m<log> [1;37m========================================================[0;38m
+2019-11-22 15:57:24.215 [info] boot_cowboy  [0;32m<log> [1;37m... Fetch File > "priv/data/data_set2_test_re.json"[0;38m
+2019-11-22 15:57:24.223 [info] boot_cowboy  [0;32m<log> [1;37m... Fetch File > "priv/data/data_set1_re.json"[0;38m
+2019-11-22 15:57:24.279 [info] boot_cowboy  [0;32m<log> [1;37mStart Cowboy Web Server Name > http Domain > '_', Static > "priv/www/vhost/hackathon", Port > 8080[0;38m
+2019-11-22 16:30:33.549 [info] boot_cowboy  [0;32m<log> [1;37mUPDATE DISPATCH!!!![0;38m
+2019-11-22 16:30:33.549 [info] boot_cowboy  [0;32m<log> [1;37mStart Cowboy Web Server Name > http Domain > '_', Static > "priv/www/vhost/hackathon", Port > 8080[0;38m
+2019-11-22 21:51:11.327 [info] boot_sup  [0;32m<log> [1;37m========================================================[0;38m
+2019-11-22 21:51:11.327 [info] boot_sup  [0;32m<log> [1;37m= ... Starting Server ... [0;38m
+2019-11-22 21:51:11.327 [info] boot_sup  [0;32m<log> [1;37m========================================================[0;38m
+2019-11-22 21:51:11.329 [info] boot_cowboy  [0;32m<log> [1;37m... Fetch File > "priv/data/data_set2_test_re.json"[0;38m
+2019-11-22 21:51:11.337 [info] boot_cowboy  [0;32m<log> [1;37m... Fetch File > "priv/data/data_set1_re.json"[0;38m
+2019-11-22 21:51:11.388 [info] boot_cowboy  [0;32m<log> [1;37m... Fetch File > "priv/data/test_basket.json"[0;38m
+2019-11-22 21:51:11.389 [info] boot_cowboy  [0;32m<log> [1;37mStart Cowboy Web Server Name > http Domain > '_', Static > "priv/www/vhost/hackathon", Port > 8080[0;38m
+2019-11-22 21:57:53.848 [info] boot_cowboy  [0;32m<log> [1;37mUPDATE DISPATCH!!!![0;38m
+2019-11-22 21:57:53.848 [info] boot_cowboy  [0;32m<log> [1;37mStart Cowboy Web Server Name > http Domain > '_', Static > "priv/www/vhost/hackathon", Port > 8080[0;38m
+2019-11-22 23:53:43.893 [info] boot_cowboy  [0;32m<log> [1;37mUPDATE DISPATCH!!!![0;38m
+2019-11-22 23:53:43.893 [info] boot_cowboy  [0;32m<log> [1;37mStart Cowboy Web Server Name > http Domain > '_', Static > "priv/www/vhost/hackathon", Port > 8080[0;38m
+2019-11-22 23:54:12.345 [info] boot_cowboy  [0;32m<log> [1;37mUPDATE DISPATCH!!!![0;38m
+2019-11-22 23:54:12.345 [info] boot_cowboy  [0;32m<log> [1;37mStart Cowboy Web Server Name > http Domain > '_', Static > "priv/www/vhost/hackathon", Port > 8080[0;38m
+2019-11-22 23:54:14.417 [info] v1_query_target  [0;32m<log> [1;37mContents [{<<"profile_sex">>,[<<"M">>,<<"F">>]},{<<"profile_job">>,[<<"10">>,<<"7">>,<<"6">>,<<"9">>,<<"4">>]},{<<"profile_age">>,[<<"10">>,<<"20">>,<<"30">>]},{<<"profile_married">>,[<<"true">>,<<"profile_children=0">>,<<"1">>,<<"2">>,<<"3">>]},{<<"profile_children">>,undefined}][0;38m

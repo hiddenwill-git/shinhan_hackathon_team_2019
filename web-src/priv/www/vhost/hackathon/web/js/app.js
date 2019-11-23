@@ -327,25 +327,19 @@ app.controller("appController", function ($scope, $modal, $window, $timeout, _ap
                                 var code = parseInt((data[n.id]/total)*100);
                                 n.num = data[n.id];
                                 // on00 / on10 / on20 / on30 / on40 / on50 / on60 / on70 / on80 / on90
-                                if (code < 9) {
-                                    n.class += ' on00';
-                                } else if (code > 35) {
+                                if (code > 24) {
                                     n.class += ' on90';
-                                } else if (code > 30) {
-                                    n.class += ' on80';
-                                } else if (code > 27) {
-                                    n.class += ' on70';
-                                } else if (code > 24) {
-                                    n.class += ' on60';
                                 } else if (code > 21) {
-                                    n.class += ' on50';
+                                    n.class += ' on80';
                                 } else if (code > 19) {
-                                    n.class += ' on40';
+                                    n.class += ' on70';
                                 } else if (code > 16) {
-                                    n.class += ' on30';
+                                    n.class += ' on60';
                                 } else if (code > 13) {
-                                    n.class += ' on20';
+                                    n.class += ' on50';
                                 } else if (code > 10) {
+                                    n.class += ' on40';
+                                } else {
                                     n.class += ' on10';
                                 } 
                                 // console.log(data[n.id],total,' | percent > '+parseInt((data[n.id]/total)*100));

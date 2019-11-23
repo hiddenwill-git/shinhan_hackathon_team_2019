@@ -605,8 +605,14 @@ app.controller("appController", function ($scope, $modal, $window, $timeout, _ap
             xAxis: [
                 {
                     type: 'value',
-                    boundaryGap: [0, 0.01]
-                }
+                    boundaryGap: [0, 0.01],
+                    // "axisLine": {
+                    //     "lineStyle": {
+                    //         "color": "#B1B1B1"
+                    //     }
+                    // }
+                },
+                
             ],
             yAxis: [
                 {
@@ -618,7 +624,8 @@ app.controller("appController", function ($scope, $modal, $window, $timeout, _ap
                 name: '인원수',
                 type: 'bar',
                 data:data
-            }]
+            }],
+            "color": ["#40662E",]
         }
     }
     

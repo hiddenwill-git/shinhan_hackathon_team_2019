@@ -82,11 +82,12 @@ app.controller("appController", function ($scope, $modal, $window, $timeout, _ap
     // profile_sex=F,M&profile_job=10,7,6,9,4&profile_age=10,20,30,40&profile_married=true&profile_children=0,1,2,3,4
     $scope.model = {
         baskets: [],
+        // '성별:남자','성별:여자','연령대:10대','연령대:20대','연령대:30대','연령대:40대',
+        //     '직업:관리자','직업:전문가','직업:사무직','직업:서비스종사자','직업:자영업','직업:농/어업_종사자','직업:공무원','직업:주부','직업:무직','직업:군인',
+        //     '결혼유무:기혼','결혼유무:미혼','자녀수:없음','자녀수:1명','자녀수:2명','자녀수:3명','자녀수:4명이상'
         target_groups:[
-            {label:'전체 조회 조건 그룹',tags:['성별:남자','성별:여자','연령대:10대','연령대:20대','연령대:30대','연령대:40대',
-            '직업:관리자','직업:전문가','직업:사무직','직업:서비스종사자','직업:자영업','직업:농/어업_종사자','직업:공무원','직업:주부','직업:무직','직업:군인',
-            '결혼유무:기혼','결혼유무:미혼','자녀수:없음','자녀수:1명','자녀수:2명','자녀수:3명','자녀수:4명이상']},
-            {label:'현대 자동차 하반기 판매 캠페인',tags:['결혼유무:기혼','연령대:20대','연령대:30대','자녀수:없음','자녀수:1명','자녀수:2명']},
+            {label:'전체 조회 조건 그룹',tags:['성별:여성','성별:남성']},
+            {label:'현대 자동차 하반기 판매 캠페인',tags:['연령대:20대','연령대:30대']},
             {label:'신혼부부 대상 마케팅',tags:['결혼유무:기혼','연령대:20대','연령대:30대','자녀수:없음','자녀수:1명','자녀수:2명']},
             {label:'자영업 대상 마케팅',tags:['직업:서비스종사자','직업:자영업','직업:농/어업_종사자']}
         ],
@@ -107,7 +108,7 @@ app.controller("appController", function ($scope, $modal, $window, $timeout, _ap
     $scope.sel5_selected = $scope.model.sel5_opt[0];
     // group tag
     $scope.load_target_tags = function(e) {
-        console.log(e.tags);
+        // console.log(e.tags);
         $scope.$broadcast('tagsinput:add',e.tags, $scope.tagsProperties.tagsinputId);
     }
     // tag
@@ -153,9 +154,6 @@ app.controller("appController", function ($scope, $modal, $window, $timeout, _ap
     }
 
     $scope.onTagsChange = function(data) {
-        // console.log('onTagsChange',data);
-        // console.log(angular.toJson(data.tags));
-        // var tags = angular.toJson(data.tags);
         var meta = {profile_sex:[],profile_job:[],profile_age:[],profile_married:[],profile_children:[]};
         data.tags.forEach(function (n) {
             var t = n.split(":");
@@ -196,23 +194,24 @@ app.controller("appController", function ($scope, $modal, $window, $timeout, _ap
         };
         // console.log(meta1);
         load_chart_by_tags(meta1);
+        // 팝업에서 사용하자!
+        $scope.last_meta_query = meta1;
     };
+    
 
     $scope.onTagsAdded = function(data) {
-        console.log('onTagsAdded',data);
+        // console.log('onTagsAdded',data);
     };
 
     $scope.onTagsRemoved = function(data) {
-        console.log('onTagsRemoved',data);
+        // console.log('onTagsRemoved',data);
     };
 
 
     $scope.tagsProperties = {
         tagsinputId: '$$$',
-        initTags: [],
+        initTags: ['성별:여성','성별:남성'],
         // initTags: ['성별:남자','성별:여자','직업:군인','직업:단순노무_종사자','직업:기능_종사자'],
-        // maxTags: 10,
-        // maxLength: 15,
         placeholder: '원하는 검색 조건 테그를 입력하세요.'
     };
 
@@ -235,45 +234,173 @@ app.controller("appController", function ($scope, $modal, $window, $timeout, _ap
 
             if (p != 'target_group_name' && p != 'target_id') {
                 t.push(p + ':' + basket[p]);
-                // console.log(t);
+            }
+        }
+    }
+    function toggle_init() {
+        // btn btn-default btn-sm
+        $scope.toggle = {
+            items: [{ seg:1,selected_index: -1, label: '가계소비지출비율', style: 'btn btn-default btn-sm' },
+            { seg:2,selected_index: -1, label: '자산비중', style: 'btn btn-default btn-sm' },
+            { seg:3,selected_index: -1, label: "캠핑관심도", style: 'btn btn-default btn-sm' },
+            { seg:4,selected_index: -1, label: '가족규모', style: 'btn btn-default btn-sm' },
+            { seg:5,selected_index: -1, label: '유류비 소비 비중', style: 'btn btn-default btn-sm' },
+            { seg:6,selected_index: -1, label: '차량관심도', style: 'btn btn-default btn-sm' }],
+            style: "btn btn-default btn-sm",
+            x_seg:null,
+            y_seg:null
+        };
+        // 2개가 선택된경우 다른 항목을 해제할때까지 상태 유지
+        $scope.toggle.click = function (item) {
+            var is_selected = item.style == 'btn btn-default btn-sm';
+            var selected = $scope.toggle.items.filter(function (row) {
+                return row.selected_index != -1
+            });
+            if (selected.length < 2 && is_selected) {
+                item.style = 'btn btn-warning btn-sm';
+                if ($scope.toggle.x_text == null) {
+                    $scope.toggle.x_text = item.label;
+                    $scope.toggle.x_seg = item.seg;
+                } else {
+                    $scope.toggle.y_text = item.label;
+                    $scope.toggle.y_seg = item.seg;
+                }
+                item.selected_index =0;
+            } else {
+                item.style = 'btn btn-default btn-sm';
+                if (is_selected) return;
+                if (item.label == $scope.toggle.x_text) {
+                    $scope.toggle.x_text = null;
+                    $scope.toggle.x_seg = null;
+                } else {
+                    $scope.toggle.y_text = null;
+                    $scope.toggle.y_seg = null;
+                }
+                grid_init();
+                promotion_init();
+                item.selected_index = -1;
+            }
+            if ($scope.toggle.x_text != null && $scope.toggle.y_text != null) {
+            
+                $scope.last_meta_query['seg'] = $scope.toggle.x_seg +","+$scope.toggle.y_seg;
+                _api('query')
+                // $scope.last_meta_query
+                .get('promotion',$scope.last_meta_query)
+                    .then(function (res) {
+                        if (res[0].result_msg == 'STATUS_NORMAL') {
+                            var data = res[0].result_data;
+                            var total = 0;
+                            for (var p in data) total += data[p];
+
+                            for (var p in data) {
+                                console.log(data[p],' total : ',total,' rate :',data[p]/total);
+                            }
+                            
+                            $scope.toggle.grids.forEach(function(n){
+                                n.num = data[n.id];
+                                n.class += ' on80';
+                            })
+                        }
+                })
             }
         }
     }
 
-    // btn btn-default btn-sm
-    $scope.toggle = {
-        items: [{ selected_index: -1, label: '보유자산', style: 'btn btn-default btn-sm' },
-        { selected_index: -1, label: '6개월내 결혼 가능성', style: 'btn btn-default btn-sm' },
-        { selected_index: -1, label: "탈퇴 위험율", style: 'btn btn-default btn-sm' },
-        { selected_index: -1, label: '자동차 보유 유뮤', style: 'btn btn-default btn-sm' }],
-        style: "btn btn-default btn-sm"
-    };
-    // 2개가 선택된경우 다른 항목을 해제할때까지 상태 유지
-    $scope.toggle.click = function (item) {
-        var is_selected = item.style == 'btn btn-default btn-sm';
-        var selected = $scope.toggle.items.filter(function (row) {
-            return row.selected_index != -1
-        });
-        if (selected.length < 2 && is_selected) {
-            item.style = 'btn btn-warning btn-sm';
-            if ($scope.toggle.x_text == null) {
-                $scope.toggle.x_text = item.label;
-            } else {
-                $scope.toggle.y_text = item.label;
-            }
-            item.selected_index =0;
-        } else {
-            item.style = 'btn btn-default btn-sm';
-            if (is_selected) return;
-            if (item.label == $scope.toggle.x_text) {
-                $scope.toggle.x_text = null;
-            } else {
-                $scope.toggle.y_text = null;
-            }
-            item.selected_index = -1;
+    
+    function grid_init() {
+        $scope.toggle.grids = [];
+        console.log('grid_init');
+        for (var i=0;i<10;i++) {
+            $scope.toggle.grids.push({id:i,class:'num'+i,num:0})
         }
+    }
+
+    $scope.modal_init = function(modal) {
+        console.log('modal_init');
+        toggle_init();
+        promotion_init();
+        grid_init();
+    }
+    
+    function calc(is_selected,reference,sum,grids,index) {
+        if (is_selected) {
+            sum.f1 += grids[index].num;
+        } else {
+            sum.f1 -= grids[index].num;
+        }
+        // 집행 예상비용
+        sum.f3 = sum.f1 * reference.price;
+        // 인당평균 광고집행 비용
+        sum.f2 = sum.f3 / sum.f1;
+        // 인원수
+        $scope.promotion.summmary.total.f1 =
+            $scope.promotion.summmary.group1.f1 + 
+            $scope.promotion.summmary.group2.f1 +
+            $scope.promotion.summmary.group3.f1;
         
-        console.log(item.style);
+        $scope.promotion.summmary.total.f3 =
+            $scope.promotion.summmary.group1.f3 + 
+            $scope.promotion.summmary.group2.f3 +
+            $scope.promotion.summmary.group3.f3;
+
+        // 인당평균 광고집행 비용
+        $scope.promotion.summmary.total.f2 =
+            $scope.promotion.summmary.total.f3 /
+            $scope.promotion.summmary.total.f1;
+    }
+
+    // 프로모션 계산기 숫자 클릭 이벤트
+    $scope.promotion = {
+        groups:{group1:[],group2:[],group3:[]},
+        click:function(e,name) {
+            if ($scope.toggle.x_text == null || $scope.toggle.y_text == null) return;
+            var grids = $scope.toggle.grids;
+            var sum = $scope.promotion.summmary[name];
+            var is_selected = e.style == null; 
+            e.style = e.style == null ? 'on' : null;
+            console.log(e,name);
+            // console.log($scope.toggle.grids[7].num);
+            if (e.id == 0) {
+                calc(is_selected,e,sum,$scope.toggle.grids,7);
+            } else if (e.id == 1) {
+                calc(is_selected,e,sum,grids,8);
+            } else if (e.id == 2) {
+                calc(is_selected,e,sum,grids,9);
+            } else if (e.id == 3) {
+                calc(is_selected,e,sum,grids,4);
+            } else if (e.id == 4) {
+                calc(is_selected,e,sum,grids,5);
+            } else if (e.id == 5) {
+                calc(is_selected,e,sum,grids,6);
+            } else if (e.id == 6) {
+                calc(is_selected,e,sum,grids,1);
+            } else if (e.id == 7) {
+                calc(is_selected,e,sum,grids,2);
+            } else if (e.id == 8) {
+                calc(is_selected,e,sum,grids,3);
+            } 
+        }
+    }
+    
+    function promotion_init() {
+        console.log('promotion_init');
+        // 집행인원 | 인당평균 광고집행 비용 | 집혱 예상 비용 | 예상 반응율
+        $scope.promotion.summmary = {
+            group1:{f1:0, f2:0, f3:0, f4:'30'},
+            group2:{f1:0, f2:0, f3:0, f4:'30'},
+            group3:{f1:0, f2:0, f3:0, f4:'30'},
+            total :{f1:0, f2:0, f3:0, f4:'30'},
+            title :{prom1:null,prom2:null,prom3:null}
+        };
+        $scope.promotion.groups.group1 = [];
+        $scope.promotion.groups.group2 = [];
+        $scope.promotion.groups.group3 = [];
+        for (var p in $scope.promotion.groups) {
+            for (var i=0;i<9;i++) {
+                $scope.promotion.groups[p].push({id:i,label:'인당 단가 6,000원',price:6000,style:null})
+            }
+            // $scope.promotion.groups[p].reverse();
+        }
     }
 
     $scope.open = function (size) {
@@ -431,8 +558,6 @@ app.controller('PopupController', function ($scope, $modal, $timeout, $modalInst
     }
 })
 
-
-
 app.filter('isEmpty', function () {
     return function (val) {
         return (val == undefined || val.length === 0 || !val.trim());
@@ -448,3 +573,13 @@ app.filter('tag_meta_to_value', function () {
                     tag;
     }
 });
+
+app.filter('num_comma', function () {
+    return function(num) {
+        if (num) {
+          return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        } else {
+          return num;
+        }
+    };
+  });

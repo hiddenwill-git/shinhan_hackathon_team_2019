@@ -200,11 +200,11 @@ app.controller("appController", function ($scope, $modal, $window, $timeout, _ap
     
 
     $scope.onTagsAdded = function(data) {
-        console.log('onTagsAdded',data);
+        // console.log('onTagsAdded',data);
     };
 
     $scope.onTagsRemoved = function(data) {
-        console.log('onTagsRemoved',data);
+        // console.log('onTagsRemoved',data);
     };
 
 
@@ -234,7 +234,6 @@ app.controller("appController", function ($scope, $modal, $window, $timeout, _ap
 
             if (p != 'target_group_name' && p != 'target_id') {
                 t.push(p + ':' + basket[p]);
-                // console.log(t);
             }
         }
     }
@@ -284,17 +283,22 @@ app.controller("appController", function ($scope, $modal, $window, $timeout, _ap
             if ($scope.toggle.x_text != null && $scope.toggle.y_text != null) {
             
                 $scope.last_meta_query['seg'] = $scope.toggle.x_seg +","+$scope.toggle.y_seg;
-                console.log($scope.last_meta_query);
                 _api('query')
                 // $scope.last_meta_query
                 .get('promotion',$scope.last_meta_query)
-                //   .get('promotion',{condition:'1,2'})
                     .then(function (res) {
                         if (res[0].result_msg == 'STATUS_NORMAL') {
                             var data = res[0].result_data;
+                            var total = 0;
+                            for (var p in data) total += data[p];
+
+                            for (var p in data) {
+                                console.log(data[p],' total : ',total,' rate :',data[p]/total);
+                            }
+                            
                             $scope.toggle.grids.forEach(function(n){
                                 n.num = data[n.id];
-                                n.class += ' on50';
+                                n.class += ' on80';
                             })
                         }
                 })
@@ -349,6 +353,7 @@ app.controller("appController", function ($scope, $modal, $window, $timeout, _ap
     $scope.promotion = {
         groups:{group1:[],group2:[],group3:[]},
         click:function(e,name) {
+            if ($scope.toggle.x_text == null || $scope.toggle.y_text == null) return;
             var grids = $scope.toggle.grids;
             var sum = $scope.promotion.summmary[name];
             var is_selected = e.style == null; 
@@ -376,7 +381,7 @@ app.controller("appController", function ($scope, $modal, $window, $timeout, _ap
             } 
         }
     }
-        
+    
     function promotion_init() {
         console.log('promotion_init');
         // 집행인원 | 인당평균 광고집행 비용 | 집혱 예상 비용 | 예상 반응율
@@ -384,7 +389,8 @@ app.controller("appController", function ($scope, $modal, $window, $timeout, _ap
             group1:{f1:0, f2:0, f3:0, f4:'30'},
             group2:{f1:0, f2:0, f3:0, f4:'30'},
             group3:{f1:0, f2:0, f3:0, f4:'30'},
-            total :{f1:0, f2:0, f3:0, f4:'30'}
+            total :{f1:0, f2:0, f3:0, f4:'30'},
+            title :{prom1:null,prom2:null,prom3:null}
         };
         $scope.promotion.groups.group1 = [];
         $scope.promotion.groups.group2 = [];

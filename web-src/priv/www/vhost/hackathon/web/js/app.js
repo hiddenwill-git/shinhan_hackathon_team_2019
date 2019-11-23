@@ -391,7 +391,7 @@ app.controller("appController", function ($scope, $modal, $window, $timeout, _ap
             group2:{f1:0, f2:0, f3:0, f4:'30'},
             group3:{f1:0, f2:0, f3:0, f4:'30'},
             total :{f1:0, f2:0, f3:0, f4:'30'},
-            title :{prom1:null,prom2:null,prom3:null}
+            title :{prom1:'전업주부 대상으로 한 소형 SUV(베뉴) ',prom2:'액티비티를 즐기는 고객을 대상 캠핑카',prom3:'전기차'}
         };
         $scope.promotion.groups.group1 = [];
         $scope.promotion.groups.group2 = [];
@@ -527,46 +527,22 @@ app.controller("appController", function ($scope, $modal, $window, $timeout, _ap
                 $scope.chart_tab1_1 = promotion_chart(data.page1[0]);
                 $scope.chart_tab1_2 = promotion_chart(data.page1[1]);
                 $scope.chart_tab1_3 = promotion_chart(data.page1[2]);
+                $scope.chart_tab1_4 = promotion_chart(data.page1[0]);
 
                 $scope.chart_tab2_1 = promotion_chart(data.page2[0]);
                 $scope.chart_tab2_2 = promotion_chart(data.page2[1]);
                 $scope.chart_tab2_3 = promotion_chart(data.page2[2]);
+                $scope.chart_tab2_4 = promotion_chart(data.page2[0]);
 
                 $scope.chart_tab3_1 = promotion_chart(data.page3[0]);
                 $scope.chart_tab3_2 = promotion_chart(data.page3[1]);
                 $scope.chart_tab3_3 = promotion_chart(data.page3[2]);
+                $scope.chart_tab3_4 = promotion_chart(data.page3[0]);
             }
         })
     }
 
-    function promotion_simple_chart(rows) {
-        return {
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: {
-                    type: 'shadow'
-                }
-            },
-            xAxis: [
-                {
-                    type: 'value',
-                    boundaryGap: [0, 0.01]
-                }
-            ],
-            yAxis: [
-                {
-                    type: 'category',
-                    data: cat
-                }
-            ],
-            series: [{
-                name: '인원수',
-                type: 'bar',
-                data:data
-            }]
-        }
-    }
-
+    
     function promotion_chart(rows) {
         var cat = [];
         var data = [];

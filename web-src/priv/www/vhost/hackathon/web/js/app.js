@@ -88,7 +88,7 @@ app.controller("appController", function ($scope, $modal, $window, $timeout, _ap
         target_groups:[
             {label:'전체 조회 조건 그룹',tags:['성별:여성','성별:남성']},
             {label:'현대 자동차 하반기 판매 캠페인',tags:['연령대:20대','연령대:30대']},
-            {label:'신혼부부 대상 마케팅',tags:['결혼유무:기혼','연령대:20대','연령대:30대','자녀수:없음','자녀수:1명','자녀수:2명']},
+            // {label:'신혼부부 대상 마케팅',tags:['결혼유무:기혼','연령대:20대','연령대:30대','자녀수:없음','자녀수:1명','자녀수:2명']},
             {label:'자영업 대상 마케팅',tags:['직업:서비스종사자','직업:자영업','직업:농/어업_종사자']}
         ],
         tags: '',
@@ -158,11 +158,12 @@ app.controller("appController", function ($scope, $modal, $window, $timeout, _ap
     }
 
     $scope.onTagsChange = function(data) {
-        console.log('onTagsChange',data);
+        console.log('onTagsChange',data,' size : ',data.tags.length);
         // return;
         var meta = {profile_sex:[],profile_job:[],profile_age:[],profile_married:[],profile_children:[]};
         data.tags.forEach(function (n) {
             var t = n.split(":");
+            // console.log(n);
             if (t.length == 2) {
                 if (t[0] == '성별') {
                     meta.profile_sex.push(t[1] == '남성' ? "M" : "F");
@@ -198,10 +199,14 @@ app.controller("appController", function ($scope, $modal, $window, $timeout, _ap
                 meta1[p] = meta[p].join();
             }
         };
-        // console.log(meta1);
+        console.log('meta1 > ',meta1);
         // load_chart_by_tags(meta1);
         // 팝업에서 사용하자!
-        $scope.last_meta_query = meta1;
+        
+        
+        // $scope.$apply(function () { 
+            $scope.last_meta_query = meta1;
+        // });
     };
 
     $scope.$watch('last_meta_query', function(newValue, oldValue) {
@@ -212,11 +217,17 @@ app.controller("appController", function ($scope, $modal, $window, $timeout, _ap
     
 
     $scope.onTagsAdded = function(data) {
-        // console.log('onTagsAdded',data);
+        console.log('onTagsAdded',data);
+        $scope.$apply(function () { 
+            $scope.onTagsChange(data)
+        });
     };
 
     $scope.onTagsRemoved = function(data) {
-        // console.log('onTagsRemoved',data);
+        console.log('onTagsRemoved',data.tags);
+        $scope.$apply(function () { 
+            $scope.onTagsChange(data)
+        });
     };
 
 

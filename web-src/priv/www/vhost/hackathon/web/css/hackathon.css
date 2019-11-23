@@ -39,7 +39,7 @@
 #fin_market #height_size_A .panel-success .panel-heading,
 #fin_market #height_size_A .panel-info .panel-heading,
 #fin_market #height_size_A .panel-warning .panel-heading,
-#fin_market #height_size_A .panel-danger .panel-heading {background: #33414e;border-color: #2f3c48;border-bottom:1px solid #2f3c48;border-radius: 0;}
+#fin_market #height_size_A .panel-danger .panel-heading {background: #33414e;border-color: #2f3c48;border-bottom:1px solid #23303b; border-top:1px solid #23303b;border-radius: 0;}
 #fin_market #height_size_A h1,
 #fin_market #height_size_A h2,
 #fin_market #height_size_A h3,
@@ -51,7 +51,7 @@
 #fin_market #height_size_A .h3,
 #fin_market #height_size_A .h4,
 #fin_market #height_size_A .h5,
-#fin_market #height_size_A .h6 {color:#999999;}
+#fin_market #height_size_A .h6 {color:#ffffff;}
 /* left_menu title  */
 #fin_market .panel-title>a {color:#fff;}
 #fin_market .panel.panel-info,
@@ -107,7 +107,7 @@
 #height_size_B .panel .panel-body .label:before {position: absolute;font-family: 'Glyphicons Halflings';content: "\e041";color: #333;font-size: 10px;line-height: 12px;left: 7px;}
 #height_size_B .panel_table {width:100%;float:left; display: table;border-bottom:1px solid #d5d5d5;}
 #height_size_B .panel_table .panel_table_row {display: table-row; }
-#height_size_B .panel_table .panel_table_row [class^="table_"] {display: table-cell; width:50%;height:50%;border-left:1px solid #d5d5d5; border-right:1px solid #d5d5d5; background-color:#f3f3f3;}
+#height_size_B .panel_table .panel_table_row [class^="table_"] {display: table-cell; width:50%;height:50%;border-left:1px solid #d5d5d5; border-right:1px solid #d5d5d5; background-color:#ffffff;}
 #height_size_B .panel_table .panel_table_row [class^="table_"]:first-child {border-right:0;}
 #height_size_B .panel_table .panel_table_row [class^="table_"] div.title {width:100%; text-align:center; background: #f5f5f5; color:#273541;border-top:1px solid #d5d5d5; border-bottom:1px solid #d5d5d5;padding:5px 0;}
 #height_size_B .panel_table .panel_table_row [class^="table_"] div.grapharea {text-align: center; overflow: hidden;}
@@ -127,7 +127,7 @@
 #fin_market #height_size_C .h3,
 #fin_market #height_size_C .h4,
 #fin_market #height_size_C .h5,
-#fin_market #height_size_C .h6{color:#999999;}
+#fin_market #height_size_C .h6{color:#ffffff;}
 #height_size_C .panel-footer {position: absolute;bottom:0;background: #2d3945;border:0;}
 #height_size_C .btn-info {background:#24aabe;border-color: #24aabe;padding: 10px;font-size: 16px;}
 #fin_market #height_size_C .btn-default {width:100%; background:#2d3945; color:#fff; border:1px solid #fff; padding:8px;}

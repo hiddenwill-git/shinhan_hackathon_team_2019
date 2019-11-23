@@ -19,3 +19,64 @@
     /* To center horizontally */
     margin: 0 auto;
 }
+
+
+#modal_m {width: 60%;}
+#modal_m .modal-body {padding: 0;width: 100%;height: 150px;overflow: hidden;}
+#modal_m #modalText {width: 100%;text-align: center;font-size: 16px;padding: 20px 0 10px;font-weight: 600;}
+
+
+#dime {
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100vh;
+    background:#000;
+    z-index:99000;
+    opacity: 70%;
+}
+
+
+#coin{
+position: fixed;
+top: 50%;
+left: 50%;
+z-index: 99999;
+margin-top: -93px;
+margin-left: -90px;
+zoom:30%;
+background:url("../img/coin.png") no-repeat;
+background-position: 0px 0px;
+width: 180px;height: 187px;
+}
+
+.coin-run-right{
+background-position: 0px 0px;
+width: 180px;height: 187px;
+animation: coin .3s infinite alternate;
+animation-timing-function: steps(1);
+}
+@keyframes coin{
+    from{ background-position: 0px 0px;width: 180px;height: 187px; }
+    5% { background-position: -180px 0px;width: 180px;height: 187px; }
+    10% { background-position: -360px 0px;width: 180px;height: 187px; }
+    15% { background-position: -540px 0px;width: 180px;height: 187px; }
+    20% { background-position: -720px 0px;width: 180px;height: 187px; }
+    25% { background-position: -900px 0px;width: 180px;height: 187px; }
+    30% { background-position: -1080px 0px;width: 180px;height: 187px; }
+    35% { background-position: -1260px 0px;width: 180px;height: 187px; }
+    40% { background-position: -1440px 0px;width: 180px;height: 187px; }
+    45% { background-position: -1620px 0px;width: 180px;height: 187px; }
+    50% { background-position: -1800px 0px;width: 180px;height: 187px; }
+    55% { background-position: -1980px 0px;width: 180px;height: 187px; }
+    60% { background-position: -2160px 0px;width: 180px;height: 187px; }
+    65% { background-position: -2340px 0px;width: 180px;height: 187px; }
+    70% { background-position: -2520px 0px;width: 180px;height: 187px; }
+    75% { background-position: -2700px 0px;width: 180px;height: 187px; }
+    80% { background-position: -2880px 0px;width: 180px;height: 187px; }
+    85% { background-position: -3060px 0px;width: 180px;height: 187px; }
+    90% { background-position: -3240px 0px;width: 180px;height: 187px; }
+    95% { background-position: -3420px 0px;width: 180px;height: 187px; }
+    100%  { background-position: -3600px 0px;width: 180px;height: 187px; }
+}

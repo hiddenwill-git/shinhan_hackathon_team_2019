@@ -108,7 +108,7 @@ app.controller("appController", function ($scope, $modal, $window, $timeout, _ap
     $scope.sel5_selected = $scope.model.sel5_opt[0];
     // group tag
     $scope.load_target_tags = function(e) {
-        console.log(e.tags);
+        // console.log(e.tags);
         $scope.$broadcast('tagsinput:add',e.tags, $scope.tagsProperties.tagsinputId);
     }
     // tag
@@ -210,7 +210,7 @@ app.controller("appController", function ($scope, $modal, $window, $timeout, _ap
 
     $scope.tagsProperties = {
         tagsinputId: '$$$',
-        initTags: [],
+        initTags: ['성별:여성','성별:남성'],
         // initTags: ['성별:남자','성별:여자','직업:군인','직업:단순노무_종사자','직업:기능_종사자'],
         placeholder: '원하는 검색 조건 테그를 입력하세요.'
     };
@@ -328,6 +328,21 @@ app.controller("appController", function ($scope, $modal, $window, $timeout, _ap
         sum.f3 = sum.f1 * reference.price;
         // 인당평균 광고집행 비용
         sum.f2 = sum.f3 / sum.f1;
+        // 인원수
+        $scope.promotion.summmary.total.f1 =
+            $scope.promotion.summmary.group1.f1 + 
+            $scope.promotion.summmary.group2.f1 +
+            $scope.promotion.summmary.group3.f1;
+        
+        $scope.promotion.summmary.total.f3 =
+            $scope.promotion.summmary.group1.f3 + 
+            $scope.promotion.summmary.group2.f3 +
+            $scope.promotion.summmary.group3.f3;
+
+        // 인당평균 광고집행 비용
+        $scope.promotion.summmary.total.f2 =
+            $scope.promotion.summmary.total.f3 /
+            $scope.promotion.summmary.total.f1;
     }
 
     // 프로모션 계산기 숫자 클릭 이벤트
@@ -335,7 +350,7 @@ app.controller("appController", function ($scope, $modal, $window, $timeout, _ap
         groups:{group1:[],group2:[],group3:[]},
         click:function(e,name) {
             var grids = $scope.toggle.grids;
-            var sum = $scope.promotion.summmary.group1;
+            var sum = $scope.promotion.summmary[name];
             var is_selected = e.style == null; 
             e.style = e.style == null ? 'on' : null;
             console.log(e,name);
@@ -368,7 +383,8 @@ app.controller("appController", function ($scope, $modal, $window, $timeout, _ap
         $scope.promotion.summmary = {
             group1:{f1:0, f2:0, f3:0, f4:'30'},
             group2:{f1:0, f2:0, f3:0, f4:'30'},
-            group3:{f1:0, f2:0, f3:0, f4:'30'}
+            group3:{f1:0, f2:0, f3:0, f4:'30'},
+            total :{f1:0, f2:0, f3:0, f4:'30'}
         };
         $scope.promotion.groups.group1 = [];
         $scope.promotion.groups.group2 = [];

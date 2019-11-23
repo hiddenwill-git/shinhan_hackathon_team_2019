@@ -124,7 +124,7 @@ app.controller("appController", function ($scope, $modal, $window, $timeout, _ap
     }
 
     function load_chart_by_tags(param) {
-        return; // end
+        // return; // end
         _api('query')
             // profile_sex=F,M&profile_job=10,7,6,9,4&profile_age=10,20,30,40&profile_married=true&profile_children=0,1,2,3,4
             // .get('target', { profile_sex: 'F,M', profile_job: '10,7,6,9,4', profile_age: '10,20,30,40', profile_married: true, profile_children: '0,1,2,3,4' })

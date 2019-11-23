@@ -339,7 +339,7 @@
                                         <button class="btn btn-default btn-block">Default</button>
                                     </div> -->
                                 <div class="panel-footer">
-                                    <button href="#modal1" data-toggle="modal"
+                                    <button href="#modal1" ng-click="modal_init('modal1')" data-toggle="modal"
                                         class="col-md-12 btn btn-info pull-right">다음</button>
                                 </div>
 
@@ -377,13 +377,6 @@
                                         <span ng-repeat="item in toggle.items">
                                             <button type="button" ng-click="toggle.click(item)" class="{{ item.style }} " >{{ item.label }}</button>
                                         </span>
-                                        <!-- <ul ng-repeat="item in toggle">
-                                            <li><button type="button" class="">보유자산</button></li>
-                                            <li><button type="button" class="on">6개월 내 결혼 가능성</button></li>
-                                            <li><button type="button" class="on">탈퇴 위험율</button></li>
-                                            <li><button type="button" class="">자동차 보유 유무</button></li>
-                                            <li><button type="button" class="">이탈율</button></li>
-                                        </ul> -->
                                     </div>
                                 </div>
                                 <div class="table">
@@ -403,8 +396,13 @@
                                         <p class="down">낮음</p>
                                         <p class="up">높음</p>
                                     </div>
-                                    <div class="table_num">
-                                        <div class="num1 "><span>1</span><span>000명</span></div>
+                                    <div class="table_num" ng-repeat="item in toggle.grids">
+                                        <div class="{{ item.class }}"><span>{{ item.id }}</span><span>{{ item.num }}명</span></div>
+                                            <!-- <span ng-repeat="basket in model.baskets">
+                                                    <span href ng-click='read_basket(basket)'
+                                                        class="label label-primary label-form">#{{basket.target_group_name}}</span>
+                                                </span> -->
+                                        <!-- <div class="num1 "><span>1</span><span>000명</span></div>
                                         <div class="num2 "><span>2</span><span>000명</span></div>
                                         <div class="num3 "><span>3</span><span>000명</span></div>
                                         <div class="num4 "><span>4</span><span>000명</span></div>
@@ -412,7 +410,7 @@
                                         <div class="num6 "><span>6</span><span>000명</span></div>
                                         <div class="num7 "><span>7</span><span>000명</span></div>
                                         <div class="num8 "><span>8</span><span>000명</span></div>
-                                        <div class="num9 "><span>9</span><span>000명</span></div>
+                                        <div class="num9 "><span>9</span><span>000명</span></div> -->
                                         <!-- on00 / on10 / on20 / on30 / on40 / on50 / on60 / on70 / on80 / on90  -->
                                     </div>
                                     <div class="table_guide">
@@ -444,7 +442,7 @@
                                 <div class="promotion_A">
                                     <div class="title">프로모션 1</div>
                                     <dl>
-                                        <dt>프로모션명</dt>
+                                        <dt>명</dt>
                                         <dd><input type="text"></dd>
                                     </dl>
                                     <dl>
@@ -452,15 +450,9 @@
                                         <dd>
                                             <div class="promotion_btn">
                                                 <ul>
-                                                    <li><a href="" class="on">인당 단가 6,000원</a></li>
-                                                    <li><a href="" class="">인당 단가 6,000원</a></li>
-                                                    <li><a href="" class="">인당 단가 6,000원</a></li>
-                                                    <li><a href="" class="on">인당 단가 6,000원</a></li>
-                                                    <li><a href="" class="">인당 단가 6,000원</a></li>
-                                                    <li><a href="" class="">인당 단가 6,000원</a></li>
-                                                    <li><a href="" class="">인당 단가 6,000원</a></li>
-                                                    <li><a href="" class="">인당 단가 6,000원</a></li>
-                                                    <li><a href="" class="on">인당 단가 6,000원</a></li>
+                                                    <li ng-repeat="item in promotion.groups.group1">
+                                                        <a href ng-click="promotion.click(item,'group1')" class="{{ item.style }}">{{ item.label }}</a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </dd>
@@ -501,15 +493,9 @@
                                         <dd>
                                             <div class="promotion_btn">
                                                 <ul>
-                                                    <li><a href="" class="">인당 단가 6,000원</a></li>
-                                                    <li><a href="" class="">인당 단가 6,000원</a></li>
-                                                    <li><a href="" class="">인당 단가 6,000원</a></li>
-                                                    <li><a href="" class="">인당 단가 6,000원</a></li>
-                                                    <li><a href="" class="">인당 단가 6,000원</a></li>
-                                                    <li><a href="" class="">인당 단가 6,000원</a></li>
-                                                    <li><a href="" class="">인당 단가 6,000원</a></li>
-                                                    <li><a href="" class="">인당 단가 6,000원</a></li>
-                                                    <li><a href="" class="">인당 단가 6,000원</a></li>
+                                                    <li ng-repeat="item in promotion.groups.group2">
+                                                        <a href ng-click="promotion.click(item,'group2')" class="{{ item.style }}">{{ item.label }}</a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </dd>
@@ -550,15 +536,9 @@
                                         <dd>
                                             <div class="promotion_btn">
                                                 <ul>
-                                                    <li><a href="" class="">인당 단가 6,000원</a></li>
-                                                    <li><a href="" class="">인당 단가 6,000원</a></li>
-                                                    <li><a href="" class="">인당 단가 6,000원</a></li>
-                                                    <li><a href="" class="">인당 단가 6,000원</a></li>
-                                                    <li><a href="" class="">인당 단가 6,000원</a></li>
-                                                    <li><a href="" class="">인당 단가 6,000원</a></li>
-                                                    <li><a href="" class="">인당 단가 6,000원</a></li>
-                                                    <li><a href="" class="">인당 단가 6,000원</a></li>
-                                                    <li><a href="" class="">인당 단가 6,000원</a></li>
+                                                    <li ng-repeat="item in promotion.groups.group3">
+                                                        <a href ng-click="promotion.click(item,'group3')" class="{{ item.style }}">{{ item.label }}</a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </dd>

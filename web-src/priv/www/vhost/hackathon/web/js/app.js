@@ -86,7 +86,7 @@ app.controller("appController", function ($scope, $modal, $window, $timeout, _ap
             {label:'전체 조회 조건 그룹',tags:['성별:남자','성별:여자','연령대:10대','연령대:20대','연령대:30대','연령대:40대',
             '직업:관리자','직업:전문가','직업:사무직','직업:서비스종사자','직업:자영업','직업:농/어업_종사자','직업:공무원','직업:주부','직업:무직','직업:군인',
             '결혼유무:기혼','결혼유무:미혼','자녀수:없음','자녀수:1명','자녀수:2명','자녀수:3명','자녀수:4명이상']},
-            {label:'현대 자동차 하반기 판매 캠페인',tags:['결혼유무:기혼','연령대:20대','연령대:30대','자녀수:없음','자녀수:1명','자녀수:2명']},
+            {label:'현대 자동차 하반기 판매 캠페인',tags:['연령대:20대','연령대:30대']},
             {label:'신혼부부 대상 마케팅',tags:['결혼유무:기혼','연령대:20대','연령대:30대','자녀수:없음','자녀수:1명','자녀수:2명']},
             {label:'자영업 대상 마케팅',tags:['직업:서비스종사자','직업:자영업','직업:농/어업_종사자']}
         ],
@@ -196,7 +196,10 @@ app.controller("appController", function ($scope, $modal, $window, $timeout, _ap
         };
         // console.log(meta1);
         load_chart_by_tags(meta1);
+        // 팝업에서 사용하자!
+        $scope.last_meta_query = meta1;
     };
+    
 
     $scope.onTagsAdded = function(data) {
         console.log('onTagsAdded',data);
@@ -242,10 +245,12 @@ app.controller("appController", function ($scope, $modal, $window, $timeout, _ap
 
     // btn btn-default btn-sm
     $scope.toggle = {
-        items: [{ selected_index: -1, label: '보유자산', style: 'btn btn-default btn-sm' },
-        { selected_index: -1, label: '6개월내 결혼 가능성', style: 'btn btn-default btn-sm' },
-        { selected_index: -1, label: "탈퇴 위험율", style: 'btn btn-default btn-sm' },
-        { selected_index: -1, label: '자동차 보유 유뮤', style: 'btn btn-default btn-sm' }],
+        items: [{ seg:1,selected_index: -1, label: '가계소비지출비율', style: 'btn btn-default btn-sm' },
+        { seg:2,selected_index: -1, label: '자산비중', style: 'btn btn-default btn-sm' },
+        { seg:3,selected_index: -1, label: "캠핑관심도", style: 'btn btn-default btn-sm' },
+        { seg:4,selected_index: -1, label: '가족규모', style: 'btn btn-default btn-sm' },
+        { seg:5,selected_index: -1, label: '유류비 소비 비중', style: 'btn btn-default btn-sm' },
+        { seg:6,selected_index: -1, label: '차량관심도', style: 'btn btn-default btn-sm' }],
         style: "btn btn-default btn-sm"
     };
     // 2개가 선택된경우 다른 항목을 해제할때까지 상태 유지
@@ -258,8 +263,10 @@ app.controller("appController", function ($scope, $modal, $window, $timeout, _ap
             item.style = 'btn btn-warning btn-sm';
             if ($scope.toggle.x_text == null) {
                 $scope.toggle.x_text = item.label;
+                $scope.toggle.x_seg = item.seg;
             } else {
                 $scope.toggle.y_text = item.label;
+                $scope.toggle.y_seg = item.seg;
             }
             item.selected_index =0;
         } else {
@@ -267,14 +274,77 @@ app.controller("appController", function ($scope, $modal, $window, $timeout, _ap
             if (is_selected) return;
             if (item.label == $scope.toggle.x_text) {
                 $scope.toggle.x_text = null;
+                $scope.toggle.x_seg = null;
             } else {
                 $scope.toggle.y_text = null;
+                $scope.toggle.y_seg = null;
             }
+            grid_init();
+            promotion_init();
             item.selected_index = -1;
         }
-        
-        console.log(item.style);
+        if ($scope.toggle.x_text != null && $scope.toggle.y_text != null) {
+           
+            $scope.last_meta_query['seg'] = $scope.toggle.x_seg +","+$scope.toggle.y_seg;
+            console.log($scope.last_meta_query);
+            _api('query')
+            // $scope.last_meta_query
+              .get('promotion',$scope.last_meta_query)
+            //   .get('promotion',{condition:'1,2'})
+                .then(function (res) {
+                    if (res[0].result_msg == 'STATUS_NORMAL') {
+                        var data = res[0].result_data;
+                        $scope.toggle.grids.forEach(function(n){
+                            n.num = data[n.id];
+                            n.class += ' on50';
+                        })
+                    }
+            })
+        }
     }
+
+    
+    function grid_init() {
+        $scope.toggle.grids = [];
+        console.log('grid_init');
+        for (var i=0;i<10;i++) {
+            $scope.toggle.grids.push({id:i,class:'num'+i,num:0})
+        }
+    }
+
+    $scope.modal_init = function(modal) {
+        console.log('modal_init');
+        promotion_init();
+        grid_init();
+    }
+
+    $scope.promotion = {
+        groups:{group1:[],group2:[],group3:[]},
+        click:function(e,name) {
+            e.style = e.style == null ? 'on' : null;
+            console.log(e,name)
+        }
+    }
+        
+    function promotion_init() {
+        console.log('promotion_init');
+        $scope.promotion.groups.group1 = [];
+        $scope.promotion.groups.group2 = [];
+        $scope.promotion.groups.group3 = [];
+        for (var p in $scope.promotion.groups) {
+            for (var i=0;i<9;i++) {
+                $scope.promotion.groups[p].push({id:i,label:'인당 단가 6,000원',price:6000,style:null})
+            }
+        }
+    }
+
+
+    // <ul ng-repeat="item in promotion.group1">
+    //                                                     <li><a href ng-click="promotion_click(item)" class="{{ item.style }}">{{ item.label }}</a></li>
+    //                                                 </ul>
+    
+    
+    
 
     $scope.open = function (size) {
         var modalInstance = $modal.open({
